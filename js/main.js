@@ -37,7 +37,7 @@
 			        {
 			            label: "",	//图表legend
 			            data: [],	//数据值
-			            backgroundColor: 'rgba(52,205,206, 0.3)',
+			            backgroundColor: 'rgba(52,205,206, 0.2)',
 			            borderColor: 'rgba(52,205,206, 1)',  
 			            borderWidth: 0.1,		//线宽（px）
 				        // borderCapStyle: "round",
@@ -49,21 +49,7 @@
 				        // pointHoverBorderWidth: "",	//hover时弹出框的宽度
 				        // pointHoverRadius: ""	
 			        },
-			        // {
-			        //     label: "",	//图表legend
-			        //     data: [],	//数据值
-			        //     backgroundColor: 'rgba(77,154,229,0.3)',
-			        //     borderColor: 'rgba(77,154,229,0.9)',  
-			        //     borderWidth: 3,		//线宽（px）
-				       //  // borderCapStyle: "round",
-				       //  // borderJoinStyle: "round",
-				       //  pointBackgroundColor: "rgba(77,154,229,0.9)",
-				       //  pointBorderColor: "#ffffff",
-				       //  // pointBorderWidth: 1,	//交叉点的border的宽（px）
-				       //  // pointHoverBorderColor: "",	//hover时弹出框的颜色
-				       //  // pointHoverBorderWidth: "",	//hover时弹出框的宽度
-				       //  // pointHoverRadius: ""	
-			        // },
+			        
 			        ]
 				},
 				// Configuration options go here
@@ -79,22 +65,23 @@
 		            },
 		            legend: {
 	                    labels: {
-	                    	display: true,
+	                    	display: false,
 	                        // 此处样式设置将覆盖全局设置
 	                        fontColor: '#555',	//图例文字颜色
-
 	                    },
 	                    position: "top",	//图例位置
 	                },
 		            scale: {
 		                beginAtZero: true,
-		                // display: true
+		                display: true
 		            }
 				}
 			},
 			init: function(legend,labels,data){
+				
+
 				var ctx = document.getElementById("radarChartCanvas").getContext('2d');
-			
+				
 				this.charsetData.data.labels = labels;
 				//图例1
 				this.charsetData.data.datasets[0].label = legend[0];
@@ -110,11 +97,6 @@
 			//返回0-100的整数
 	        return Math.round(Math.random() * 100);
 	    },
-	    init: function(){
-			//图表全局样式设置
-			Chart.defaults.global.defaultFontColor = '#555';	//字体颜色
-			// Chart.defaults.global.defaultFontSize = '9';		//字体大小	
-		},
 		lineChartInit: function(data){
 	    	//创建线型图表
 			var chartLineLegend = "My First dataset",
@@ -146,26 +128,47 @@
 				// 	//  KLChart.randomScalingFactor(),],
 				// ];
 			KLChart.chartRada.init(chartRadaLegend,chartRadalabels,chartRadaData);
-	    }
+	    },
+	    init: function(){
+			//图表全局样式设置
+			Chart.defaults.global.defaultFontColor = '#555';	//字体颜色
+			// Chart.defaults.global.defaultFontSize = '9';		//字体大小	
+			Chart.defaults.global.legend = 'false';
+		},
 	}
 //*******
 $(function(){
-	// 
-	var abLiItems = [
+	var headBarContent = "数据挖掘工程师";
+	// headBar
+	var vueHeadBar = new Vue({
+		el: '.headBarContent',
+		data: {
+			text: headBarContent,
+		}
+	})
+	// vueHeadBar.text = "h";	//修改text方式
+
+	// 雷达图数据
+	var dataRadar = [
 	      { name: '编程语言', points: '83' },
 	      { name: '机器学习理论', points: '80' },
 	      { name: '数据结构和算法', points: '97' },
 	      { name: '云计算和虚拟化', points: '78' },
 	      { name: 'HADOOP', points: '44' },
 	    ];
+	//雷达图
 	var vueAbilityScoreList = new Vue({
 	  el: '#abilityScoreList',
 	  data: {
-	    abLiItems: abLiItems,
+	    abLiItems: dataRadar,
 	  }
 	})
-
-	
+	//初始化图表
 	KLChart.init();
-	KLChart.radarChartInit(abLiItems);
+	KLChart.radarChartInit(dataRadar);
+
+	// ******noticeBar关闭按钮
+	$(".noticeBarCloseBtn").on("click",function(){
+		$(".noticeBar").slideUp(200);
+	})
 })

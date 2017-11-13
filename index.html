@@ -19,7 +19,7 @@
 		<div class="headBar">
             <div class="headBarBox">
                 <i class="icon iconfont icon-fanhui column_1" id="backBtn"></i>
-                <span class="column_2">数据挖掘工程师</span>
+                <span class="column_2 headBarContent" >{{ text }}</span>
                 <i class="icon iconfont icon-more column_1" id="icon-more" style="display: none"></i>
                 <i class="icon iconfont icon-myselected column_3" id="icon-myselected"></i>
             </div>
@@ -27,13 +27,14 @@
         <div class="noticeBar">
         	<div class="noticeBarBox">
         		<i class="icon iconfont icon-yinliang column_1" id=""></i>
-        		<span class="column_2" id="">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
-                <i class="icon iconfont icon-guanbi column_3" id=""></i>
+        		<span class="noticeBarContent column_2">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
+                <i class="icon iconfont icon-guanbi column_3 noticeBarCloseBtn" id=""></i>
         	</div>
         </div>
 		<div id="page1-1">
 			<div class="charBox">
-				<canvas id="radarChartCanvas" width="90%" height="65rem"></canvas>
+				<div id="radarLegend">能力状况</div>
+				<canvas id="radarChartCanvas" width="90%" height="60rem"></canvas>
 			</div>
 			<div class="abilityBox">
 				<div class="abilityBoxHead">
@@ -45,7 +46,12 @@
 				</ul>
 			</div>
 		</div>
-		<div id="page2-1" style="display: none;"></div>
+		<div id="page2-1" style="display: none;">
+			<div class="charBox">
+				<div id="lineLegend">能力状况</div>
+				<canvas id="lineChartCanvas" width="90%" height="60rem"></canvas>
+			</div>
+		</div>
 		<div id="page3-1" style="display: none;"></div>
 		<div id="page3-2" style="display: none;"></div>
 		<div id="page4-1" style="display: none;"></div>

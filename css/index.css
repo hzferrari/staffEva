@@ -16,7 +16,7 @@ ul,li{
 	height: 100%;
 	width: 100%;
 	/*overflow: auto;*/
-	overflow-x: hidden;
+	/*overflow-x: hidden;*/
 }
 /*headBar*/
 .headBar{
@@ -87,13 +87,20 @@ ul,li{
 }
 /******page1-1******/
 /*char*/
-.charBox{
+#page1-1 .charBox{
 	position: relative;
-	margin-top: 5.5rem;
-	margin-bottom: 2rem;
+	margin-top: 5rem;
+	margin-bottom: 1.5rem;
+}
+#radarLegend{
+	position: relative;
+	left: 3%;
+	color: #8A8888;
+	font-size: 0.5rem;
+	font-weight: 700;
 }
 #radarChartCanvas{
-	
+	/**/
 }
 /**/
 .abilityBox{
