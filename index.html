@@ -8,6 +8,7 @@
 	<title>员工评测站</title>
 	<script src="js/Chart.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
@@ -16,20 +17,23 @@
 	<div id="mainBox">
 		<div class="headBar">
             <div class="headBarBox">
-                <i class="icon iconfont icon-fanhui" id=""></i>
-                <span>数据挖掘工程师</span>
-                <i class="icon iconfont icon-more" id="icon-more"></i>
+                <i class="icon iconfont icon-fanhui columnOne" id="backBtn"></i>
+                <span class="columnTwo">数据挖掘工程师</span>
+                <i class="icon iconfont icon-more columnOne" id="icon-more" style="display: none"></i>
+                <i class="icon iconfont icon-myselected columnThree" id="icon-myselected"></i>
             </div>
         </div>
         <div class="noticeBar">
         	<div class="noticeBarBox">
-        		<i class="icon iconfont icon-yinliang" id=""></i>
-        		<span id="">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
-                <i class="icon iconfont icon-guanbi" id=""></i>
+        		<i class="icon iconfont icon-yinliang columnOne" id=""></i>
+        		<span class="columnTwo" id="">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
+                <i class="icon iconfont icon-guanbi columnThree" id=""></i>
         	</div>
         </div>
 		<div id="page1-1">
-			<div class="charBox"></div>
+			<div class="charBox">
+				<canvas id="radarChartCanvas" width="95%" height="90rem"></canvas>
+			</div>
 			<div class="abilityBox">
 				<div class="abilityBoxHead">
 					<span>能力构成</span>
@@ -49,5 +53,7 @@
 		<div id="page3-2" style="display: none;"></div>
 		<div id="page4-1" style="display: none;"></div>
 	</div>
+
+	<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>
