@@ -1,9 +1,22 @@
 html{
-	font-size: 14px;
+	font-size: 16px;
 }
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+ul,li{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+/**/
 #mainBox{
 	height: 100%;
-	overflow: auto;
+	width: 100%;
+	/*overflow: auto;*/
+	overflow-x: hidden;
 }
 /*headBar*/
 .headBar{
@@ -17,15 +30,16 @@ html{
     z-index: 100;
 }
 .headBarBox{
-	margin: 1rem 0;
+	/*margin: 1rem 0;*/
+	line-height: 3rem;
 }
-.headBarBox .columnOne{
+.headBarBox .column_1{
 	width: 9%;
 }
-.headBarBox .columnTwo{
+.headBarBox .column_2{
 	width: 80%;
 }
-.headBarBox .columnThree{
+.headBarBox .column_3{
 	width: 9%;
 }
 .headBarBox span{
@@ -47,31 +61,107 @@ html{
     z-index: 100;
 }
 
-.noticeBarBox .columnOne{
+.noticeBarBox .column_1{
 	width: 7%;
 }
-.noticeBarBox .columnTwo{
-	width: 85%;
+.noticeBarBox .column_2{
+	width: 80%;
 }
-.noticeBarBox .columnThree{
+.noticeBarBox .column_3{
 	width: 7%;
 }
 .noticeBarBox span{
     display: inline-block;
-    font-size: 0.5rem;
-    letter-spacing: 1px;
-    margin: 0.65rem auto;
+    font-size: 12px;
+    /*letter-spacing: 1px;*/
+    line-height: 2rem;
+    white-space: nowrap;
+    overflow: auto;
 }
 .noticeBarBox .icon{
-	margin: 0.3rem auto;
+	position: relative;
+	top: -0.6rem;
+	margin: 0 auto;
     font-size: 1.1rem;
     
 }
-/*page1-1*/
+/******page1-1******/
+/*char*/
 .charBox{
 	position: relative;
 	margin-top: 5.5rem;
+	margin-bottom: 2rem;
 }
+#radarChartCanvas{
+	
+}
+/**/
 .abilityBox{
 	position: relative;
+}
+.abilityBoxHead{
+	position: relative;
+	width: 100%;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	color: #8A8888;
+	font-weight: 700;
+	background-color: #F4F4F4;
+}
+.abilityBoxHead span{
+	font-size: 0.5rem; 
+}
+.abilityBoxHead span:nth-child(1){
+	margin-left: 5%;
+}
+.abilityBoxHead span:nth-child(2){
+	margin-left: 45%;
+}
+/*能力构成list*/
+#abilityScoreList li{
+	width: 100%;
+	height: 3rem;
+	line-height: 3rem;
+	border-bottom: 1px solid rgba(204,204,204,0.2);
+}
+#abilityScoreList li .icon{
+	color: #34CDCE;
+}
+#abilityScoreList li:last-child{
+	border-bottom: none;
+}
+#abilityScoreList li .column_1{
+	position: relative;
+	display: inline-block;
+	width: 8%;
+	left: 4%;
+}
+#abilityScoreList li .column_2{
+	position: relative;
+	display: inline-block;
+	width: 58%;
+	left: 6%;
+	color: #555;
+}
+#abilityScoreList li .column_3{
+	position: relative;
+	display: inline-block;
+	width: 10%;
+	left: 2%;
+	color: #c0c0c0;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+#abilityScoreList li .column_4{
+	position: relative;
+	display: inline-block;
+	width: 10%;
+	left: 13%;
+}
+.abilityScoreListAddBtn{
+	/*padding-left: 2%;*/
+}
+#abilityScoreList li .toNextPage{
+	font-size: 1.5rem;
+	font-weight: 700;
 }

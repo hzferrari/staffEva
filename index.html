@@ -8,6 +8,7 @@
 	<title>员工评测站</title>
 	<script src="js/Chart.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="https://unpkg.com/vue"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
@@ -17,35 +18,31 @@
 	<div id="mainBox">
 		<div class="headBar">
             <div class="headBarBox">
-                <i class="icon iconfont icon-fanhui columnOne" id="backBtn"></i>
-                <span class="columnTwo">数据挖掘工程师</span>
-                <i class="icon iconfont icon-more columnOne" id="icon-more" style="display: none"></i>
-                <i class="icon iconfont icon-myselected columnThree" id="icon-myselected"></i>
+                <i class="icon iconfont icon-fanhui column_1" id="backBtn"></i>
+                <span class="column_2">数据挖掘工程师</span>
+                <i class="icon iconfont icon-more column_1" id="icon-more" style="display: none"></i>
+                <i class="icon iconfont icon-myselected column_3" id="icon-myselected"></i>
             </div>
         </div>
         <div class="noticeBar">
         	<div class="noticeBarBox">
-        		<i class="icon iconfont icon-yinliang columnOne" id=""></i>
-        		<span class="columnTwo" id="">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
-                <i class="icon iconfont icon-guanbi columnThree" id=""></i>
+        		<i class="icon iconfont icon-yinliang column_1" id=""></i>
+        		<span class="column_2" id="">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
+                <i class="icon iconfont icon-guanbi column_3" id=""></i>
         	</div>
         </div>
 		<div id="page1-1">
 			<div class="charBox">
-				<canvas id="radarChartCanvas" width="95%" height="90rem"></canvas>
+				<canvas id="radarChartCanvas" width="90%" height="65rem"></canvas>
 			</div>
 			<div class="abilityBox">
 				<div class="abilityBoxHead">
-					<span>能力构成</span>
-					<span>上次测试成绩</span>
-					<ul id="abilityScoreList">
-						<li><i class="icon iconfont icon-add"></i><span>编程语言</span><span>89/100</span><i class="icon iconfont icon-arrow-right"></i></li>
-						<li><i class="icon iconfont icon-add"></i><span>机器学习理论</span><span>57/70</span><i class="icon iconfont icon-arrow-right"></i></li>
-						<li><i class="icon iconfont icon-add"></i><span>数据结构和算法</span><span>39/40</span><i class="icon iconfont icon-arrow-right"></i></li>
-						<li><i class="icon iconfont icon-add"></i><span>云计算和虚拟化</span><span>73/80</span><i class="icon iconfont icon-arrow-right"></i></li>
-						<li><i class="icon iconfont icon-add"></i><span>HADOOP</span><span>62/100</span><i class="icon iconfont icon-arrow-right"></i></li>
-					</ul>
+					<span class="column_1">能力构成</span>
+					<span class="column_2">能力积分</span>
 				</div>
+				<ul id="abilityScoreList">
+					<li v-for="abLiItem in abLiItems" ><i class="icon iconfont icon-add column_1 abilityScoreListAddBtn"></i><span class="column_2">{{ abLiItem.name }}</span><span class="column_3">{{ abLiItem.points }}</span><i class="icon iconfont icon-arrow-right column_4 toNextPage"></i></li>
+				</ul>
 			</div>
 		</div>
 		<div id="page2-1" style="display: none;"></div>

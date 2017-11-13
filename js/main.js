@@ -1,5 +1,5 @@
 // ********图表对象
-var KLChart = {
+	var KLChart = {
 		//******定义线型图表对象
 		chartLine: {	
 			charsetData: {
@@ -78,14 +78,14 @@ var KLChart = {
 		                }
 		            },
 		            legend: {
-                        labels: {
-                        	display: true,
-                            // 此处样式设置将覆盖全局设置
-                            fontColor: '#555',	//图例文字颜色
+	                    labels: {
+	                    	display: true,
+	                        // 此处样式设置将覆盖全局设置
+	                        fontColor: '#555',	//图例文字颜色
 
-                        },
-                        position: "top",	//图例位置
-                    },
+	                    },
+	                    position: "top",	//图例位置
+	                },
 		            scale: {
 		                beginAtZero: true,
 		                // display: true
@@ -113,33 +113,59 @@ var KLChart = {
 	    init: function(){
 			//图表全局样式设置
 			Chart.defaults.global.defaultFontColor = '#555';	//字体颜色
-			// Chart.defaults.global.defaultFontSize = '10';		//字体大小	
+			// Chart.defaults.global.defaultFontSize = '9';		//字体大小	
 		},
-		lineChartInit: function(){
+		lineChartInit: function(data){
 	    	//创建线型图表
 			var chartLineLegend = "My First dataset",
 				chartLinelabels = ["January", "February", "March", "April", "May", "June", "July"],	//x轴
 				chartLineData = [0, 10, 5, 2, 20, 30, 45];	//y轴
 			KLChart.chartLine.init(chartLineLegend,chartLinelabels,chartLineData);
 	    },
-	    radarChartInit: function(){
+	    radarChartInit: function(data){
 	    	//创建雷达图表
-			var chartRadaLegend = ["能力状况"],
-				chartRadalabels = ['编程语言', '机器学习理论', '数据结构和算法', '云计算和虚拟化', 'HADOOP'],
-				chartRadaData = [
-					[KLChart.randomScalingFactor(),
-					 KLChart.randomScalingFactor(),
-					 KLChart.randomScalingFactor(),
-					 KLChart.randomScalingFactor(),
-					 KLChart.randomScalingFactor(),],
-					// [KLChart.randomScalingFactor(),
-					//  KLChart.randomScalingFactor(),
-					//  KLChart.randomScalingFactor(),
-					//  KLChart.randomScalingFactor(),
-					//  KLChart.randomScalingFactor(),],
-				];
+	    	var chartRadaLegend = ["能力状况"];
+	    	var chartRadalabels = [], chartRadaData = [[]];
+	    	for(var i=0,len=data.length; i<len; i++){
+				chartRadalabels[i] = data[i].name;
+				chartRadaData[0][i] = data[i].points;
+			}
+			
+
+				// chartRadalabels = ['编程语言', '机器学习理论', '数据结构和算法', '云计算和虚拟化', 'HADOOP'],
+				// chartRadaData = [
+				// 	[KLChart.randomScalingFactor(),
+				// 	 KLChart.randomScalingFactor(),
+				// 	 KLChart.randomScalingFactor(),
+				// 	 KLChart.randomScalingFactor(),
+				// 	 KLChart.randomScalingFactor(),],
+				// 	// [KLChart.randomScalingFactor(),
+				// 	//  KLChart.randomScalingFactor(),
+				// 	//  KLChart.randomScalingFactor(),
+				// 	//  KLChart.randomScalingFactor(),
+				// 	//  KLChart.randomScalingFactor(),],
+				// ];
 			KLChart.chartRada.init(chartRadaLegend,chartRadalabels,chartRadaData);
 	    }
 	}
+//*******
+$(function(){
+	// 
+	var abLiItems = [
+	      { name: '编程语言', points: '83' },
+	      { name: '机器学习理论', points: '80' },
+	      { name: '数据结构和算法', points: '97' },
+	      { name: '云计算和虚拟化', points: '78' },
+	      { name: 'HADOOP', points: '44' },
+	    ];
+	var vueAbilityScoreList = new Vue({
+	  el: '#abilityScoreList',
+	  data: {
+	    abLiItems: abLiItems,
+	  }
+	})
+
+	
 	KLChart.init();
-	KLChart.radarChartInit();
+	KLChart.radarChartInit(abLiItems);
+})
