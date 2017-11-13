@@ -1,0 +1,23 @@
+
+#mainBox{
+	height: 100%;
+	overflow: auto;
+}
+.headBar{
+    background: #fff;
+    width:100%;
+    position: fixed;
+    top: 0;
+    z-index: 85; 
+   
+}
+.headBarBox{
+	margin: 9px 2%;
+}
+.headBar p{
+    display: inline-block;
+    /*float: left;*/
+    color: #30c5c3;
+    font-size: 1.3em;
+    margin: 0px;
+}

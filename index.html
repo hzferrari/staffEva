@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- 屏幕缩放 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>员工评测站</title>
+	<script src="js/Chart.js"></script>
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+</head>
+<body>
+	<div id="mainBox">
+		<div class="headBar">
+            <div class="headBarBox">
+                <i class="icon iconfont icon-fanhui" id=""></i>
+                <span>数据挖掘工程师</span>
+                <i class="icon iconfont icon-more" id="icon-more"></i>
+            </div>
+        </div>
+        <div class="noticeBar">
+        	<div class="noticeBarBox">
+        		<i class="icon iconfont icon-yinliang" id=""></i>
+        		<span id="">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
+                <i class="icon iconfont icon-guanbi" id=""></i>
+        	</div>
+        </div>
+		<div id="page1-1">
+			<div class="charBox"></div>
+			<div class="abilityBox">
+				<div class="abilityBoxHead">
+					<span>能力构成</span>
+					<span>上次测试成绩</span>
+					<ul id="abilityScoreList">
+						<li><i class="icon iconfont icon-add"></i><span>编程语言</span><span>89/100</span><i class="icon iconfont icon-arrow-right"></i></li>
+						<li><i class="icon iconfont icon-add"></i><span>机器学习理论</span><span>57/70</span><i class="icon iconfont icon-arrow-right"></i></li>
+						<li><i class="icon iconfont icon-add"></i><span>数据结构和算法</span><span>39/40</span><i class="icon iconfont icon-arrow-right"></i></li>
+						<li><i class="icon iconfont icon-add"></i><span>云计算和虚拟化</span><span>73/80</span><i class="icon iconfont icon-arrow-right"></i></li>
+						<li><i class="icon iconfont icon-add"></i><span>HADOOP</span><span>62/100</span><i class="icon iconfont icon-arrow-right"></i></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="page2-1" style="display: none;"></div>
+		<div id="page3-1" style="display: none;"></div>
+		<div id="page3-2" style="display: none;"></div>
+		<div id="page4-1" style="display: none;"></div>
+	</div>
+</body>
+</html>
