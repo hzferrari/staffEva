@@ -103,7 +103,7 @@ ul,li{
 	/**/
 }
 /**/
-.abilityBox{
+#abilityBox{
 	position: relative;
 }
 .abilityBoxHead{
@@ -170,5 +170,20 @@ ul,li{
 }
 #abilityScoreList li .toNextPage{
 	font-size: 1.5rem;
+	font-weight: 700;
+}
+/******page2-1******/
+/*char*/
+#page2-1 .charBox{
+	position: relative;
+	margin-top: 4.5rem;
+	margin-bottom: 1.5rem;
+}
+#lineLegend{
+	position: relative;
+	display: inline;
+	left: 75%;
+	color: #8A8888;
+	font-size: 0.5rem;
 	font-weight: 700;
 }

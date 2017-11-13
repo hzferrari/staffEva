@@ -31,12 +31,12 @@
                 <i class="icon iconfont icon-guanbi column_3 noticeBarCloseBtn" id=""></i>
         	</div>
         </div>
-		<div id="page1-1">
+		<div id="page1-1" class="pages">
 			<div class="charBox">
 				<div id="radarLegend">能力状况</div>
 				<canvas id="radarChartCanvas" width="90%" height="60rem"></canvas>
 			</div>
-			<div class="abilityBox">
+			<div id="abilityBox">
 				<div class="abilityBoxHead">
 					<span class="column_1">能力构成</span>
 					<span class="column_2">能力积分</span>
@@ -46,15 +46,28 @@
 				</ul>
 			</div>
 		</div>
-		<div id="page2-1" style="display: none;">
+		<div id="page2-1" class="pages" style="display: none;">
 			<div class="charBox">
-				<div id="lineLegend">能力状况</div>
-				<canvas id="lineChartCanvas" width="90%" height="60rem"></canvas>
+				<div id="lineLegend">最新<br>测试报告</div>
+				<canvas id="lineChartCanvas" width="90%" height="50rem"></canvas>
+			</div>
+			<div id="page2-1_box2">
+				<div id="page2-1_box2Head">
+					<span>测试说明</span>
+					<span>能力榜样</span>
+					<span>能力值</span>
+				</div>
+				<div class="box2innerBoxLeft">
+					
+				</div>
+				<div class="box2innerBoxRight">
+					
+				</div>
 			</div>
 		</div>
-		<div id="page3-1" style="display: none;"></div>
-		<div id="page3-2" style="display: none;"></div>
-		<div id="page4-1" style="display: none;"></div>
+		<div id="page3-1" class="pages" style="display: none;"></div>
+		<div id="page3-2" class="pages" style="display: none;"></div>
+		<div id="page4-1" class="pages" style="display: none;"></div>
 	</div>
 
 	<script src="js/main.js" type="text/javascript"></script>
