@@ -8,7 +8,8 @@
 	<title>员工评测站</title>
 	<script src="js/Chart.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="https://unpkg.com/vue"></script>
+	<!-- <script type="text/javascript" src="https://unpkg.com/vue"></script> -->
+	<script type="text/javascript" src="js/vue.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
@@ -48,7 +49,8 @@
 		</div>
 		<div id="page2-1" class="pages" style="display: none;">
 			<div class="charBox">
-				<div id="lineLegend">最新<br>测试报告</div>
+				<span class="leftSpan">测试状况</span>
+				<div id="lineLegend"><i class="icon iconfont icon-file-o"></i><span><p class="line1">测试报告</p><p class="line2">2018/8/13</p></span></div>
 				<canvas id="lineChartCanvas" width="90%" height="50rem"></canvas>
 				<div id="lineChartSlideBar">
 					SlideBar
@@ -56,21 +58,32 @@
 			</div>
 			<div id="page2-1_box2">
 				<div id="page2-1_box2Head">
-					<span>测试说明</span>
 					<span>能力榜样</span>
-					<span>能力值</span>
+					<span>本次测试说明</span>
+					<!-- <span>能力值</span> -->
 				</div>
 				<div class="box2innerBox box2innerBoxLeft">
-					<p>测试时间：</p>
-					<p>2018/2/15—2018/3/15</p>
-					<p>测试题目：</p>
-					<p>15道填空题/每题2分</p>
-					<p>50道选择题/每题1分</p>
-					<p>测试总分：80分</p>
+					<span class="contentBox">
+						<ul id="abilityRangeList">
+							<li v-for="abRanItem in abRanItems"><span>{{ abRanItem.range }}</span><span>{{ abRanItem.name }}</span><span>{{ abRanItem.score }}</span><i class="icon iconfont icon-i abilityRangeInfo"></i></li>				
+						</ul>
+					</span>
 				</div>
 				<div class="box2innerBox box2innerBoxRight">
-					
+					<span class="contentBox">
+						<p>测试时间：</p>
+						<p>2018/8/15至9/15</p>
+						<p>测试题目：</p>
+						<p>65道选择题</p>
+						<p>每题1分</p>
+						<br>
+						<p>测试总分：80分</p>
+					</span>
 				</div>
+			</div>
+			<div id="page2-1_box3">
+				<span id="learnAndPracBtn">学习与练习</span>
+				<span id="enterTestBtn">进入测试</span>
 			</div>
 		</div>
 		<div id="page3-1" class="pages" style="display: none;"></div>

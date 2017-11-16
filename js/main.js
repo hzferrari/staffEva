@@ -26,6 +26,11 @@ var KLChart = {
                     },
                     position: "top",	//图例位置
                 },
+             	scales: {
+     	            // yAxes: [{
+     	            //     stacked: true
+     	            // }]
+     	        }
 		    }
 		},
 		init: function(legend,labels,data){
@@ -82,8 +87,28 @@ var KLChart = {
                     position: "top",	//图例位置
                 },
 	            scale: {
-	                beginAtZero: true,
-	                display: true
+	                // beginAtZero: true,
+	                display: true,
+		            // xAxes: [{
+		            //     stacked: true
+		            // }],
+		            // ticks 0 10 20等标签
+	                // fontColor: '#000',
+	                ticks: {
+	                    display: false,		//坐标轴数值
+	                    beginAtZero: true,
+	                    fontColor: "#000",
+	                    maxTicksLimit: undefined,	//最大值
+	                },
+	                scaleLabel: {
+	                   fontColor: "#000",
+	                },
+	                // 线条
+	                gridLines: {
+	                    color: '#fff',
+	                    //zeroLineColor: '#fff'
+	                }
+        
 	            }
 			}
 		},
@@ -127,20 +152,6 @@ var KLChart = {
 			chartRadaData[0][i] = data[i].points;
 		}
 		
-
-			// chartRadalabels = ['编程语言', '机器学习理论', '数据结构和算法', '云计算和虚拟化', 'HADOOP'],
-			// chartRadaData = [
-			// 	[KLChart.randomScalingFactor(),
-			// 	 KLChart.randomScalingFactor(),
-			// 	 KLChart.randomScalingFactor(),
-			// 	 KLChart.randomScalingFactor(),
-			// 	 KLChart.randomScalingFactor(),],
-			// 	// [KLChart.randomScalingFactor(),
-			// 	//  KLChart.randomScalingFactor(),
-			// 	//  KLChart.randomScalingFactor(),
-			// 	//  KLChart.randomScalingFactor(),
-			// 	//  KLChart.randomScalingFactor(),],
-			// ];
 		KLChart.chartRada.init(chartRadaLegend,chartRadalabels,chartRadaData);
     },
     init: function(){
@@ -152,16 +163,8 @@ var KLChart = {
 }
 //*******
 $(function(){
+	//******数据设置
 	var headBarContent = "数据挖掘工程师";
-	// headBar
-	var vueHeadBar = new Vue({
-		el: '.headBarContent',
-		data: {
-			text: headBarContent,
-		}
-	})
-	// vueHeadBar.text = "h";	//修改text方式
-
 	// 雷达图数据
 	var dataRadar = [
 	      { name: '编程语言', points: 83 },
@@ -170,13 +173,12 @@ $(function(){
 	      { name: '云计算和虚拟化', points: 78 },
 	      { name: 'HADOOP', points: 44 },
 	    ];
-	//雷达图对应能力列表
-	var vueAbilityScoreList = new Vue({
-	  el: '#abilityScoreList',
-	  data: {
-	    abLiItems: dataRadar,
-	  }
-	})
+	//能力榜样列表
+	var abilitiRangeItems = [
+			{ range: 1, name: '李广源', score: 178 },
+			{ range: 2, name: '张贺d', score: 159 },
+			{ range: 3, name: '程菲', score: 158 },
+		];
 	//  折线图数据
 	var dataLine = [
 	      { name: '1月', points: 83 },
@@ -188,9 +190,32 @@ $(function(){
 	      { name: '7月', points: 80 },
 	      { name: '8月', points: 97 },
 	      { name: '9月', points: 78 },
-
 	    ];
 
+
+	// headBar
+	var vueHeadBar = new Vue({
+		el: '.headBarContent',
+		data: {
+			text: headBarContent,
+		}
+	})
+	// vueHeadBar.text = "h";	//修改text方式
+
+	//雷达图对应能力列表
+	var vueAbilityScoreList = new Vue({
+	  el: '#abilityScoreList',
+	  data: {
+	    abLiItems: dataRadar,
+	  }
+	})
+	
+	var vueAbilityRangeList = new Vue({
+		el: '#abilityRangeList',
+		data: {
+			abRanItems: abilitiRangeItems,
+		}
+	})
 	//初始化图表
 	KLChart.init();
 	KLChart.radarChartInit(dataRadar);
@@ -202,4 +227,5 @@ $(function(){
 
 	$(".pages").hide();
 	$("#page2-1").show();
+	vueHeadBar.text = "机器学习理论";	//修改标题
 })
