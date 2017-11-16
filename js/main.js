@@ -176,7 +176,7 @@ $(function(){
 	//能力榜样列表
 	var abilitiRangeItems = [
 			{ range: 1, name: '李广源', score: 178 },
-			{ range: 2, name: '张贺d', score: 159 },
+			{ range: 2, name: '张贺', score: 159 },
 			{ range: 3, name: '程菲', score: 158 },
 		];
 	//  折线图数据

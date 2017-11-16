@@ -204,7 +204,7 @@ body{
 }
 #lineLegend:after {
 	position: relative;
-	top: 24px;
+	top: 26px;
 	right: 75px;
 	content: "";
     width: 0;
@@ -238,24 +238,26 @@ body{
 	background-color: #F4F4F4;
 }
 #page2-1_box2Head{
-	padding: 1rem;
+	padding: 0.8rem;
 	line-height: 1rem;
 	color: #6B6464;
 	font-weight: 700;
-	font-size: 0.8rem;
+	
 }
 #page2-1_box2Head span{
 	position: relative;
 }
 #page2-1_box2Head span:nth-child(1){
 	left: 3%;
+	font-size: 0.8rem;
 }
 #page2-1_box2Head span:nth-child(2){
-	left: 45%;
+	left: 48%;
+	font-size: 0.5rem;
 }
-#page2-1_box2Head span:nth-child(3){
+/*#page2-1_box2Head span:nth-child(3){
 	left: 40%;
-}
+}*/
  #page2-1_box2 .box2innerBox{
 	display: inline-block;
 	position: relative;
@@ -331,19 +333,33 @@ body{
 }
 #page2-1_box2 .box2innerBoxRight .contentBox{
 	display: inline-block;
-	padding: 8px;
+	padding: 8px 17px;
 	font-size: 12px;
 	line-height: 18px;
 }
-#page2-1_box3 span{
-	display: inline-block;
+#page2-1_box3{
 	text-align: center;
 }
+#page2-1_box3 span{
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	padding: 0.8rem 0;
+	margin: 1.5rem 3px;
+	font-weight: 700;
+	border-radius: 3px;
+}
 #learnAndPracBtn{
-	width: 30%;
+	width: 27%;
 	background-color: #FFE858;
+	color: #A6A5A5;
 }
 #enterTestBtn{
-	width: 60%;
+	width: 57%;
 	background-color: #34CDCE;
+	color: #fff;
+	
+}
+#enterTestBtn i{
+	font-size: 1.5rem;
 }
