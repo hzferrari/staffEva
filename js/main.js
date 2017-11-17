@@ -10,13 +10,15 @@ var KLChart = {
 		            label: "",	//图表legend
 		            data: [],	//数据值
 		            // fill: 'false',	//线条下方区域是否填充颜色（false=不填充）
-		            backgroundColor: 'rgba(52,205,206, 0.2)',	//线条下方区域填充颜色
+		            // backgroundColor: 'rgba(52,205,206, 0.2)',	//线条下方区域填充颜色
+		            backgroundColor: '',	//线条下方区域填充颜色
 		            borderColor: 'rgba(52,205,206, 1)',	
 		            
 		        }]
 			},
 			// Configuration options go here
 		    options: {
+		    	
 		    	legend: {
                     labels: {
                     	display: false,
@@ -27,15 +29,31 @@ var KLChart = {
                     position: "top",	//图例位置
                 },
              	scales: {
-     	            // yAxes: [{
-     	            //     stacked: true
-     	            // }]
+     	            yAxes: [{
+     	             	display:false,	//隐藏y标签与网格
+		                ticks: {
+		                    // beginAtZero:true
+		                }
+		            }],
+		            xAxes: [{
+     	             	display:false,	//隐藏y标签与网格
+		               
+		            }],
      	        }
 		    }
 		},
 		init: function(legend,labels,data){
 			var ctx = document.getElementById("lineChartCanvas").getContext('2d');
-		
+			//下方区域填充渐变色
+			var screenHeight = window.screen.height;
+			var grad  = ctx.createLinearGradient(0,0,0,screenHeight/3.5);
+			grad.addColorStop(0,'rgba(52,205,206, 0.4)');    	// 
+			grad.addColorStop(0,'rgba(52,205,206, 0.3)');    	// 
+			grad.addColorStop(0.5,'rgba(52,205,206, 0.2)'); 	// 
+			grad.addColorStop(0.75,'rgba(52,205,206, 0.1)'); 	// 
+			grad.addColorStop(1,'rgba(52,205,206, 0)');  
+			this.charsetData.data.datasets[0].backgroundColor = grad;
+
 			this.charsetData.data.labels = labels;
 			this.charsetData.data.datasets[0].label = legend;
 			this.charsetData.data.datasets[0].data = data;
@@ -88,7 +106,7 @@ var KLChart = {
                 },
 	            scale: {
 	                // beginAtZero: true,
-	                display: true,
+	                display: false,
 		            // xAxes: [{
 		            //     stacked: true
 		            // }],
@@ -159,10 +177,12 @@ var KLChart = {
 		Chart.defaults.global.defaultFontColor = '#555';	//字体颜色
 		// Chart.defaults.global.defaultFontSize = '9';		//字体大小	
 		Chart.defaults.global.legend = 'false';
+
 	},
 }
 //*******
 $(function(){
+
 	//******数据设置
 	var headBarContent = "数据挖掘工程师";
 	// 雷达图数据
@@ -225,7 +245,7 @@ $(function(){
 		$(".noticeBar").slideUp(200);
 	})
 
-	$(".pages").hide();
+	// $(".pages").hide();
 	$("#page2-1").show();
 	vueHeadBar.text = "机器学习理论";	//修改标题
 })
