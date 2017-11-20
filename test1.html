@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+</head>
+<body>
+	<div id="chartContainer">
+	  <canvas id="chart3" width="500" height="500"></canvas>
+	</div>
+	<script type="text/javascript">
+		var data_line = {
+		  labels: ["January", "February", "March", "April", "May", "June", "July"],
+		  datasets: [{
+		    label: "My First dataset",
+		    fillColor: "rgba(220,220,220,0.2)",
+		    strokeColor: "rgba(220,220,220,1)",
+		    pointColor: "rgba(220,220,220,1)",
+		    pointStrokeColor: "#fff",
+		    pointHighlightFill: "#fff",
+		    pointHighlightStroke: "rgba(220,220,220,1)",
+		    data: [65, 59, 80, 81, 56, 55, 40]
+		  }]
+		};
+
+
+		var options = {
+		  tooltipTemplate: "<%= value %>",
+
+		  showTooltips: true,
+
+		  onAnimationComplete: function() {
+		    this.showTooltip(this.datasets[0].points, true);
+		  },
+		  tooltipEvents: []
+		}
+
+		var context = $('#chart3').get(0).getContext('2d');
+		var chart = new Chart(context).Line(data_line, options);
+	</script>
+</body>
+</html>

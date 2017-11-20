@@ -28,7 +28,7 @@
         <div class="noticeBar">
         	<div class="noticeBarBox">
         		<i class="icon iconfont icon-yinliang column_1" id=""></i>
-        		<span class="noticeBarContent column_2">您的HADOOP能力值较低，请进行提升并重新参加测试！</span>
+        		<span class="noticeBarContent column_2">{{text}}</span>
                 <i class="icon iconfont icon-guanbi column_3 noticeBarCloseBtn" id=""></i>
         	</div>
         </div>
@@ -70,15 +70,7 @@
 					</span>
 				</div>
 				<div class="box2innerBox box2innerBoxRight">
-					<span class="contentBox">
-						<p>测试时间：</p>
-						<p>2018/8/15至9/15</p>
-						<p>测试题目：</p>
-						<p>65道选择题</p>
-						<p>每题1分</p>
-						<br>
-						<p>测试总分：80分</p>
-					</span>
+					<span class="contentBox" v-html="text"></span>
 				</div>
 			</div>
 			<div id="page2-1_box3">

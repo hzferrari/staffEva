@@ -12,13 +12,13 @@ var KLChart = {
 		            // fill: 'false',	//线条下方区域是否填充颜色（false=不填充）
 		            // backgroundColor: 'rgba(52,205,206, 0.2)',	//线条下方区域填充颜色
 		            backgroundColor: '',	//线条下方区域填充颜色
-		            borderColor: 'rgba(52,205,206, 1)',	
+		            borderColor: 'rgba(52,205,206, 1)',   
 		            
 		        }]
 			},
 			// Configuration options go here
 		    options: {
-		    	
+
 		    	legend: {
                     labels: {
                     	display: false,
@@ -36,10 +36,14 @@ var KLChart = {
 		                }
 		            }],
 		            xAxes: [{
-     	             	display:false,	//隐藏y标签与网格
-		               
+          		        gridLines: {
+          	            	color: '#fff',	//x轴颜色
+		                    display: false,   	              
+          	           }
 		            }],
-     	        }
+     	        },
+
+
 		    }
 		},
 		init: function(legend,labels,data){
@@ -78,7 +82,7 @@ var KLChart = {
 			        pointBackgroundColor: "rgba(52,205,206, 1)",
 			        pointBorderColor: "rgba(52,205,206, 1)",
 			        pointBorderWidth: 2,	//交叉点的border的宽（px）
-			        // pointHoverBorderColor: "",	//hover时弹出框的颜色
+			        pointHoverBorderColor: "rgba(52,205,206,1)",	//hover时点的背景颜色
 			        // pointHoverBorderWidth: "",	//hover时弹出框的宽度
 			        // pointHoverRadius: ""	
 		        },
@@ -87,9 +91,13 @@ var KLChart = {
 			},
 			// Configuration options go here
 		    options: {
+
 			    title:{
                		display:false,
 	                text:"这是一行标题"
+	            },
+	            labels:{
+	            	display:true
 	            },
 	            elements: {
 	                line: {
@@ -105,29 +113,53 @@ var KLChart = {
                     position: "top",	//图例位置
                 },
 	            scale: {
-	                // beginAtZero: true,
-	                display: false,
-		            // xAxes: [{
-		            //     stacked: true
-		            // }],
-		            // ticks 0 10 20等标签
-	                // fontColor: '#000',
-	                ticks: {
+	                display: true,           
+	                color: '#fff',
+	                ticks: {   // ticks 0 10 20等标签
 	                    display: false,		//坐标轴数值
 	                    beginAtZero: true,
-	                    fontColor: "#000",
-	                    maxTicksLimit: undefined,	//最大值
+	                    // fontColor: "#646464",
+	                    maxTicksLimit: 4,	//网格线数量最大值
+	                    fontSize: 10,
+	                    fontFamily: "'Arial', sans-serif",
 	                },
-	                scaleLabel: {
-	                   fontColor: "#000",
-	                },
+	                // scaleLabel: {
+	                //    fontColor: "#fff",
+	                // },
 	                // 线条
 	                gridLines: {
-	                    color: '#fff',
-	                    //zeroLineColor: '#fff'
+	                    color: '#f4f4f4',
+	                    // zeroLineColor: '#fff'
+	                    display: true,
+	                    drawTicks: true,
+	                    offsetGridLines: true,
+	                    // borderDash: [10],
+	                    // borderDashOffset: 10,
+	                    tickMarkLength: 1,
 	                }
         
+	            },
+	            animation: {
+	                onComplete: function () {
+	                    var ctx = this.chart.ctx;
+	                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+	                    ctx.fillStyle = "#555";
+	                    ctx.textAlign = 'center';
+	                    ctx.textBaseline = 'bottom';
+
+	                    this.data.datasets.forEach(function (dataset)
+	                    {
+	                        for (var i = 0; i < dataset.data.length; i++) {
+	                            for(var key in dataset._meta)
+	                            {
+	                                var model = dataset._meta[key].data[i]._model;
+	                                ctx.fillText(dataset.data[i], model.x, model.y - 5);
+	                            }
+	                        }
+	                    });
+	                }
 	            }
+	            
 			}
 		},
 		init: function(legend,labels,data){
@@ -185,6 +217,7 @@ $(function(){
 
 	//******数据设置
 	var headBarContent = "数据挖掘工程师";
+	var noticeBarContent = "您的HADOOP能力值较低，请进行提升并重新参加测试！";
 	// 雷达图数据
 	var dataRadar = [
 	      { name: '编程语言', points: 83 },
@@ -211,7 +244,15 @@ $(function(){
 	      { name: '8月', points: 97 },
 	      { name: '9月', points: 78 },
 	    ];
-
+	//本次测试说明(v-html插入)
+	var testInstruct = "<p>测试时间：</p>\
+						<p>2018/8/15至9/15</p>\
+						<br>\
+						<p>测试题目：</p>\
+						<p>65道选择题</p>\
+						<p>每题1分</p>\
+						<br>\
+						<p>测试总分：80分</p>";
 
 	// headBar
 	var vueHeadBar = new Vue({
@@ -221,6 +262,12 @@ $(function(){
 		}
 	})
 	// vueHeadBar.text = "h";	//修改text方式
+	var vueNoticeBar = new Vue({
+		el: '.noticeBarContent.column_2',
+		data: {
+			text: noticeBarContent,
+		}
+	})
 
 	//雷达图对应能力列表
 	var vueAbilityScoreList = new Vue({
@@ -236,6 +283,15 @@ $(function(){
 			abRanItems: abilitiRangeItems,
 		}
 	})
+
+	//本次测试说明vue
+	var vueTestInstruct = new Vue({
+		el: ".box2innerBoxRight .contentBox",
+		data: {
+			text: testInstruct,
+		}
+	})
+
 	//初始化图表
 	KLChart.init();
 	KLChart.radarChartInit(dataRadar);
@@ -248,4 +304,6 @@ $(function(){
 	// $(".pages").hide();
 	$("#page2-1").show();
 	vueHeadBar.text = "机器学习理论";	//修改标题
+
+
 })
