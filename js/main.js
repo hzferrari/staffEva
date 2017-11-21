@@ -72,9 +72,10 @@ var KLChart = {
 		activeSlideBar: function(){
 			//slideBar滑动功能
 			var ctx = document.getElementById("lineChartCanvas").getContext('2d');
+			ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+
 			// ctx.fillStyle = "#555";
-            // ctx.textAlign = 'center';
-            // ctx.textBaseline = 'top';
+            
 
 			//
 			var slideBar = document.getElementById("lineChartSlideBar");
@@ -87,6 +88,8 @@ var KLChart = {
 
 			})
 			function showValue(lastrange,range){
+				ctx.textAlign = 'center';
+            	ctx.textBaseline = 'bottom';
 				if(lastrange){
 					ctx.fillStyle = "#fff";
 
@@ -355,7 +358,7 @@ $(function(){
 	
 
 	$(".pages").hide();
-	$("#page2-1").show();
+	$("#page2-1").hide();
 	vueHeadBar.text = "机器学习理论";	//修改标题
 
 
