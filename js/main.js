@@ -13,6 +13,11 @@ var KLChart = {
 		            // backgroundColor: 'rgba(52,205,206, 0.2)',	//线条下方区域填充颜色
 		            backgroundColor: '',	//线条下方区域填充颜色
 		            borderColor: 'rgba(52,205,206, 1)',   
+		            borderWidth: 3,		//线的宽度（以像素为单位）。
+		            pointRadius: 1,		//点形状的半径。如果设置为0，则不呈现点。
+		            // pointBorderColor: '#FEE75B', 	//点的边框颜色。
+		            pointHoverBackgroundColor: 'rgba(52,205,206, 0.8)',		//徘徊时点背景颜色。
+		            pointHoverBorderColor: '#FEE75B',	//徘徊时边框的颜色。
 		            
 		        }]
 			},
@@ -43,16 +48,16 @@ var KLChart = {
 		            }],
      	        },
 
+		    },
 
-		    }
 		},
 		init: function(legend,labels,data){
 			var ctx = document.getElementById("lineChartCanvas").getContext('2d');
 			//下方区域填充渐变色
 			var screenHeight = window.screen.height;
-			var grad  = ctx.createLinearGradient(0,0,0,screenHeight/3.5);
+			var grad  = ctx.createLinearGradient(0,0,0,screenHeight/3.7);
 			grad.addColorStop(0,'rgba(52,205,206, 0.4)');    	// 
-			grad.addColorStop(0,'rgba(52,205,206, 0.3)');    	// 
+			// grad.addColorStop(0.25,'rgba(52,205,206, 0.3)');    	// 
 			grad.addColorStop(0.5,'rgba(52,205,206, 0.2)'); 	// 
 			grad.addColorStop(0.75,'rgba(52,205,206, 0.1)'); 	// 
 			grad.addColorStop(1,'rgba(52,205,206, 0)');  
@@ -62,6 +67,51 @@ var KLChart = {
 			this.charsetData.data.datasets[0].label = legend;
 			this.charsetData.data.datasets[0].data = data;
 			var chart = new Chart(ctx, this.charsetData);
+			this.activeSlideBar();
+		},
+		activeSlideBar: function(){
+			//slideBar滑动功能
+			var ctx = document.getElementById("lineChartCanvas").getContext('2d');
+			// ctx.fillStyle = "#555";
+            // ctx.textAlign = 'center';
+            // ctx.textBaseline = 'top';
+
+			//
+			var slideBar = document.getElementById("lineChartSlideBar");
+			var range, lastrange;	//slideBar的range值
+			slideBar.addEventListener("input",function(){
+				range = this.value;
+			
+				showValue(lastrange,range);
+				lastrange = range;
+
+			})
+			function showValue(lastrange,range){
+				if(lastrange){
+					ctx.fillStyle = "#fff";
+
+					KLChart.chartLine.charsetData.data.datasets.forEach(function (dataset)
+			        {
+			            for(var key in dataset._meta)
+			            {
+			                var model = dataset._meta[key].data[lastrange-1]._model;
+			                ctx.fillText(dataset.data[lastrange-1], model.x, model.y - 5);
+			            }
+			            
+			        });
+				}
+				ctx.fillStyle = "#555";
+				KLChart.chartLine.charsetData.data.datasets.forEach(function (dataset)
+		        {
+		            for(var key in dataset._meta)
+		            {
+		                var model = dataset._meta[key].data[range-1]._model;
+		                ctx.fillText(dataset.data[range-1], model.x, model.y - 5);
+		            }
+		            
+		        });
+			}
+			
 		},
 	},
 	//******定义雷达图表对象
@@ -84,7 +134,8 @@ var KLChart = {
 			        pointBorderWidth: 2,	//交叉点的border的宽（px）
 			        pointHoverBorderColor: "rgba(52,205,206,1)",	//hover时点的背景颜色
 			        // pointHoverBorderWidth: "",	//hover时弹出框的宽度
-			        // pointHoverRadius: ""	
+			        // pointHoverRadius: "",
+			        spanGaps: false,	
 		        },
 		        
 		        ]
@@ -241,8 +292,8 @@ $(function(){
 	      { name: '5月', points: 74 },
 	      { name: '6月', points: 83 },
 	      { name: '7月', points: 80 },
-	      { name: '8月', points: 97 },
-	      { name: '9月', points: 78 },
+	      { name: '8月', points: NaN },	//不存在的数据显示NaN
+	      { name: '9月', points: NaN },
 	    ];
 	//本次测试说明(v-html插入)
 	var testInstruct = "<p>测试时间：</p>\
@@ -301,7 +352,9 @@ $(function(){
 		$(".noticeBar").slideUp(200);
 	})
 
-	// $(".pages").hide();
+	
+
+	$(".pages").hide();
 	$("#page2-1").show();
 	vueHeadBar.text = "机器学习理论";	//修改标题
 
