@@ -359,6 +359,7 @@ $(function(){
 
 	$(".pages").hide();
 	$("#page2-1").hide();
+	$("#page1-2").show();
 	vueHeadBar.text = "机器学习理论";	//修改标题
 
 
