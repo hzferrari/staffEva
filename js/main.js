@@ -355,7 +355,20 @@ $(function(){
 		$(".noticeBar").slideUp(200);
 	})
 
-	
+	//开关
+	var oswitchBtn = {	
+		switch1_on : "",
+        switch1_off : "",
+        init: function(){
+        	this.switch1_on = document.getElementById("switch1_on");
+        	this.switch1_off = document.getElementById("switch1_off");
+			this.switch1_on.onclick=function(){
+				oswitchBtn.switch1_off.className = (oswitchBtn.switch1_off.className=="switch_off1")?"switch_on1":"switch_off1";
+				oswitchBtn.switch1_on.className = (oswitchBtn.switch1_on.className=="switch_off2")?"switch_on2":"switch_off2";
+			};
+        } 
+	};
+	oswitchBtn.init();
 
 	$(".pages").hide();
 	$("#page2-1").hide();

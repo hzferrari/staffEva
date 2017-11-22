@@ -227,6 +227,42 @@ body{
 	font-weight: 700;
 	font-size: 1.2rem;
 }
+/*开关*/
+#switch1_off{
+    width: 1.8rem;
+    height: 1.1rem;
+    border-radius: 1rem;
+    position: relative;
+}
+#switch1{
+	left: 28%;
+}
+#switch1_on{
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    position: absolute;
+    background: #fff;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+}
+.switch_on1{
+    background: #34CDCE;
+}
+.switch_on2{
+    top: 0;
+    right: 0;
+}
+.switch_off1{
+    background: rgba(255,255,255,0.4);
+    border:1px solid rgba(0,0,0,0.15);
+    border-left: transparent;
+    box-sizing: border-box;
+}
+.switch_off2{
+    left: 0px;
+    top: -1px;
+    /*border:2px solid rgba(0,0,0,0.1);*/
+}
 /******page2-1******/
 #page2-1{
 	color: #6B6464;
