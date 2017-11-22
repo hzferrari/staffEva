@@ -14,6 +14,12 @@ ul,li{
 body{
 	overflow-x: hidden;
 }
+/*隐藏滚动条*/
+::-webkit-scrollbar{
+	display: none; 
+	width: 0; 
+	height: 0;
+}
 /**/
 #mainBox{
 	height: 100%;
@@ -180,7 +186,8 @@ body{
 /******page1-2******/
 #page1-2{
 	background-color: #F4F4F4;
-	min-height: 1000px;
+	/*min-height: 1000px;*/
+	overflow: hidden;
 }
 #personalCenterItems{
 	position: absolute;
@@ -274,7 +281,7 @@ body{
 /*char*/
 #page2-1 .charBox{
 	position: relative;
-	margin-top: 4.5rem;
+	margin-top: 3.7rem;
 	margin-bottom: 1rem;
 }
 #page2-1 .leftSpan{
@@ -354,6 +361,7 @@ body{
     background: #f4f4f4;
     /*background: rgba(52,205,206,0.1);*/
 }
+
 /**/
 #page2-1_box2{
 	position: relative;

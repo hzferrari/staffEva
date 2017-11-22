@@ -270,7 +270,7 @@ var KLChart = {
 $(function(){
 
 	//******数据设置
-	var headBarContent = "数据挖掘工程师";
+	var headBarContent = "首页";
 	var noticeBarContent = "您的HADOOP能力值较低，请进行提升并重新参加测试！";
 	// 雷达图数据
 	var dataRadar = [
@@ -344,7 +344,7 @@ $(function(){
 		data: {
 			text: testInstruct,
 		}
-	})
+	});
 
 	//初始化图表
 	KLChart.init();
@@ -353,7 +353,11 @@ $(function(){
 	// ******noticeBar关闭按钮
 	$(".noticeBarCloseBtn").on("click",function(){
 		$(".noticeBar").slideUp(200);
-	})
+	});
+
+	$(".noticeBar").hide();
+	var page1_2height = window.screen.height;
+	$("#page1-2").css("height",page1_2height+'px');
 
 	//开关
 	var oswitchBtn = {	
@@ -370,10 +374,67 @@ $(function(){
 	};
 	oswitchBtn.init();
 
-	$(".pages").hide();
-	$("#page2-1").hide();
-	$("#page1-2").show();
-	vueHeadBar.text = "机器学习理论";	//修改标题
+	//******页面转跳
+	var oPageSkip = {
+		thisPageStack: ["#page1-1"],
+		lastPageStack: [],
+		thisPageTitleStack: [headBarContent],
+		lastPageTitleStack: [],
+		goNext: function(nextPage,nextTitle){
+			var $thisPage = this.thisPageStack.pop();	//thisPageStack出栈当前页面
+			if( $thisPage == nextPage ){
+				//已是当前页面不转跳
+				this.thisPageStack.push($thisPage);
+				return false;
+			}else{
+				this.thisPageStack.push(nextPage);			//thisPageStack入栈下一个页面
+				this.lastPageStack.push($thisPage);			//lastPageStack入栈当前页面
+
+				//页面切换效果
+				$($thisPage).hide(100);
+				$(nextPage).show(100);	
+
+				//标题修改
+				vueHeadBar.text = nextTitle;
+				var thisTitle = this.thisPageTitleStack.pop();
+				this.lastPageTitleStack.push(thisTitle);	//记录当前标题
+				this.thisPageTitleStack.push(nextTitle);	//记录下一页标题
+			}		
+		},
+		goBack: function(){
+			if(this.lastPageStack.length < 1){
+				//已经没有上一页了
+				return false;
+			}else{
+				var $thisPage = this.thisPageStack.pop(),	//thisPageStack出栈当前页面
+				$backPage = this.lastPageStack.pop();		//lastPageStack出栈前一个页面
+				this.thisPageStack.push($backPage);			//thisPageStack出栈前一个页面
+
+				$($thisPage).hide(100);
+				$($backPage).show(100);
+
+				//标题修改
+				var thisTitle = this.lastPageTitleStack.pop();
+				vueHeadBar.text = thisTitle;	
+				this.thisPageTitleStack.push(thisTitle);
+			}
+		},
+	};
+	//能力列表转跳按钮
+	$("#abilityScoreList .toNextPage").on("click",function(){
+		var nextTitle = $(this).parent().find(".column_2").text();
+		oPageSkip.goNext("#page2-1", nextTitle);
+		
+	});
+	//bar栏个人中心按钮
+	$("#icon-myselected").on("click",function(){
+		oPageSkip.goNext("#page1-2", "个人中心");
+	});
+	//bar栏返回按钮
+	$("#backBtn").on("click",function(){
+		oPageSkip.goBack();
+	});
+		
 
 
 })
