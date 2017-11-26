@@ -246,6 +246,11 @@ $(function(){
 	})
 
 	// $(".pages").hide();
-	$("#page2-1").show();
+	// $("#page2-1").show();
+
 	vueHeadBar.text = "机器学习理论";	//修改标题
+
+
+
+
 })
