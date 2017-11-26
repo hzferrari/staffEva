@@ -287,7 +287,7 @@ var KLChart = {
 $(function(){
 
 	//******数据设置
-	var headBarContent = "首页";
+	var headBarContent = "数据挖掘工程师";
 	var noticeBarContent = "您的HADOOP能力值较低，请进行提升并重新参加测试！";
 	// 雷达图数据
 	var dataRadar = [
@@ -566,6 +566,10 @@ $(function(){
 	//下一题
 	$("#nextQuestion").on("click",function(){
 		oPageSkip.goNext("#page4-1", "测试报告");
+	})
+	//完成测试
+	$("#completeTest").on("click",function(){
+		oPageSkip.goNext("#page1-1", "数据挖掘工程师");
 	})
 
 })
