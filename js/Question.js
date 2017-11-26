@@ -1,9 +1,10 @@
 $(function(){
     //page3 脚本
-    // $("#icon-myselected").hide();
-    // $("#icon-more").show();
-    // $(".noticeBar").hide();
-    // $("#page3-1").show();
+    $("#icon-myselected").hide();
+    $("#icon-more").show();
+    $(".noticeBar").hide();
+    $("#page1-1").hide();
+    $("#page3-1").show();
 
 
     var $Ali=$(".AArea li");
@@ -83,61 +84,50 @@ $(function(){
     $(".AStapsBox").append(astap);
     }
 
-    //倒计时
+})
 
-    var h=0,m=0,s=0;
-    var mytime=null;
-    //开始倒计时
-    function doSubmit(){
-        h=document.myform.hh.value;
-        m=document.myform.mm.value;
-        s=document.myform.ss.value;
-        run();
-
-        document.getElementById("sid").disabled=true;
-        document.getElementById("tid").disabled=false;
-        document.getElementById("gid").disabled=true;
-
-        return false;
-
-    }
-
-    //执行倒计时
-    function run(){
-        //输出
-        var hid = document.getElementById("hid");
-        hid.innerHTML=(h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
-        s--;
-        if(s<0){
-            s=59;
-            m--;
-            if(m<0){
-                m=59;
-                h--;
-                if(h<0){
-                    alert('时间到！');
-                    return;
-                }
+//倒计时
+var h=0,m=0,s=20;
+var mytime=null;
+//开始倒计时
+run();
+//执行倒计时
+function run(){
+    //输出
+    var hid = document.getElementById("timeCounting");
+    hid.innerHTML=(h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+    s--;
+    if(s<0){
+        s=59;
+        m--;
+        if(m<0){
+            m=59;
+            h--;
+            if(h<0){
+                alert('时间到！');
+                $("#page4-1").show(100);
+                $("#page3-1").hide(100);
+                return;
             }
         }
-        mytime = setTimeout("run()",1000);
     }
+    mytime = setTimeout("run()",1000);
+}
 
-    //暂停
-    function doPause(){
-        if(mytime!=null){
-            clearTimeout(mytime);
-            mytime=null;
-        }
-        document.getElementById("tid").disabled=true;
-        document.getElementById("gid").disabled=false;
+//暂停
+function doPause(){
+    if(mytime!=null){
+        clearTimeout(mytime);
+        mytime=null;
+        $(".mark").fadeIn(200);
+        $(".TestContinue").fadeIn(200);
+        headBarContent="测试报告";
     }
+}
 
-    //继续
-    function doGo(){
-        run();
-        document.getElementById("tid").disabled=false;
-        document.getElementById("gid").disabled=true;
-    }
-
-})
+//继续
+function doGo(){
+    run();
+    $(".mark").fadeOut(200);
+    $(".TestContinue").fadeOut(200);
+}

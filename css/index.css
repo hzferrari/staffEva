@@ -686,7 +686,29 @@ body{
 .Qbtm:last-child{
 	background: #34cdce;;
 }
+/*//倒计时*/
+.TestContinue{
+	display: block;
+	margin-top: 35%;
+	background: #92b5bc;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
 
+	/*margin-top: 35%;*/
+	/*background: #05050591;*/
+	/*color: #fff;*/
+	/*padding: 26px;*/
+	/*text-align: center;*/
+	/*margin: 126px;*/
+	/*border-radius: 50%;*/
+}
+.TestContinue i{
+	font-size: 3rem;
+}
+.TestContinue p{
+	font-size: 1rem;
+}
 /*//草稿纸样式*/
 .ScriptBox{
 display: none;

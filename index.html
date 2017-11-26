@@ -145,10 +145,14 @@
 				</canvas>
 				<div id="clearScript">清除草稿</div>
 				</div>
+				<div class="TestContinue">
+					<i class="icon iconfont icon-jixukaoshi"  onclick="doGo()" ></i>
+					<p>继续答题</p>
+				</div>
 			</div>
 
 			<div class="infoBanner">
-				<div class="BannerLeft"><i class="icon iconfont icon-zanting TimePause"></i><span class="timeCounting">20:15</span></div>
+				<div class="BannerLeft"><i class="icon iconfont icon-zanting TimePause" onclick="doPause()"></i><span id="timeCounting"></span></div>
 			    <div class="BannerRight">
 				<i class="icon iconfont icon-tishi "></i>
 				<i class="icon iconfont icon-jisuanqi"></i>
