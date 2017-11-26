@@ -283,85 +283,87 @@ var KLChart = {
 
 	},
 }
+
+//******数据设置
+var headBarContent = "数据挖掘工程师";
+var noticeBarContent = "您的HADOOP能力值较低，请进行提升并重新参加测试！";
+// 雷达图数据
+var dataRadar = [
+      { name: '编程语言', points: 82 },
+      { name: '机器学习理论', points: 80 },
+      { name: '数据结构和算法', points: 97 },
+      { name: '云计算和虚拟化', points: 78 },
+      { name: 'HADOOP', points: 58 },
+    ];
+//能力榜样列表
+var abilitiRangeItems = [
+		{ range: 1, name: '李广源', score: 178 },
+		{ range: 2, name: '张贺', score: 159 },
+		{ range: 3, name: '程菲', score: 158 },
+	];
+//  折线图数据
+var dataLine = [
+      { name: '1月', points: 83 },
+      { name: '2月', points: 80 },
+      { name: '3月', points: 96 },
+      { name: '4月', points: 78 },
+      { name: '5月', points: 74 },
+      { name: '6月', points: 83 },
+      { name: '7月', points: 80 },
+      { name: '8月', points: NaN },	//不存在的数据显示NaN
+      { name: '9月', points: NaN },
+    ];
+//本次测试说明(v-html插入)
+var testInstruct = "<p>测试时间：</p>\
+					<p>2018/8/15至9/15</p>\
+					<br>\
+					<p>测试题目：</p>\
+					<p>20道选择题</p>\
+					<p>每题5分</p>\
+					<br>\
+					<p>测试总分：80分</p>";
+
+// headBar
+var vueHeadBar = new Vue({
+	el: '.headBarContent',
+	data: {
+		text: headBarContent,
+	}
+})
+// vueHeadBar.text = "h";	//修改text方式
+var vueNoticeBar = new Vue({
+	el: '.noticeBarContent.column_2',
+	data: {
+		text: noticeBarContent,
+	}
+})
+
+//雷达图对应能力列表
+var vueAbilityScoreList = new Vue({
+  el: '#abilityScoreList',
+  data: {
+    abLiItems: dataRadar,
+  }
+})
+
+var vueAbilityRangeList = new Vue({
+	el: '#abilityRangeList',
+	data: {
+		abRanItems: abilitiRangeItems,
+	}
+})
+
+//本次测试说明vue
+var vueTestInstruct = new Vue({
+	el: ".box2innerBoxRight .contentBox",
+	data: {
+		text: testInstruct,
+	}
+});
 //*******
 $(function(){
 
-	//******数据设置
-	var headBarContent = "数据挖掘工程师";
-	var noticeBarContent = "您的HADOOP能力值较低，请进行提升并重新参加测试！";
-	// 雷达图数据
-	var dataRadar = [
-	      { name: '编程语言', points: 82 },
-	      { name: '机器学习理论', points: 80 },
-	      { name: '数据结构和算法', points: 97 },
-	      { name: '云计算和虚拟化', points: 78 },
-	      { name: 'HADOOP', points: 58 },
-	    ];
-	//能力榜样列表
-	var abilitiRangeItems = [
-			{ range: 1, name: '李广源', score: 178 },
-			{ range: 2, name: '张贺', score: 159 },
-			{ range: 3, name: '程菲', score: 158 },
-		];
-	//  折线图数据
-	var dataLine = [
-	      { name: '1月', points: 83 },
-	      { name: '2月', points: 80 },
-	      { name: '3月', points: 96 },
-	      { name: '4月', points: 78 },
-	      { name: '5月', points: 74 },
-	      { name: '6月', points: 83 },
-	      { name: '7月', points: 80 },
-	      { name: '8月', points: NaN },	//不存在的数据显示NaN
-	      { name: '9月', points: NaN },
-	    ];
-	//本次测试说明(v-html插入)
-	var testInstruct = "<p>测试时间：</p>\
-						<p>2018/8/15至9/15</p>\
-						<br>\
-						<p>测试题目：</p>\
-						<p>20道选择题</p>\
-						<p>每题5分</p>\
-						<br>\
-						<p>测试总分：80分</p>";
-
-	// headBar
-	var vueHeadBar = new Vue({
-		el: '.headBarContent',
-		data: {
-			text: headBarContent,
-		}
-	})
-	// vueHeadBar.text = "h";	//修改text方式
-	var vueNoticeBar = new Vue({
-		el: '.noticeBarContent.column_2',
-		data: {
-			text: noticeBarContent,
-		}
-	})
-
-	//雷达图对应能力列表
-	var vueAbilityScoreList = new Vue({
-	  el: '#abilityScoreList',
-	  data: {
-	    abLiItems: dataRadar,
-	  }
-	})
 	
-	var vueAbilityRangeList = new Vue({
-		el: '#abilityRangeList',
-		data: {
-			abRanItems: abilitiRangeItems,
-		}
-	})
-
-	//本次测试说明vue
-	var vueTestInstruct = new Vue({
-		el: ".box2innerBoxRight .contentBox",
-		data: {
-			text: testInstruct,
-		}
-	});
 
 
 	//初始化图表
