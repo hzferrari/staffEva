@@ -367,9 +367,6 @@ var vueTestInstruct = new Vue({
 //*******
 $(function(){
 
-	
-
-
 	//初始化图表
 	KLChart.init();
 	KLChart.radarChartInit(dataRadar);
