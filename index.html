@@ -149,10 +149,14 @@
 				</canvas>
 				<div id="clearScript">清除草稿</div>
 				</div>
+				<div class="TestContinue">
+					<i class="icon iconfont icon-jixukaoshi"  onclick="doGo()" ></i>
+					<p>继续答题</p>
+				</div>
 			</div>
 
 			<div class="infoBanner">
-				<div class="BannerLeft"><i class="icon iconfont icon-zanting TimePause"></i><span class="timeCounting">20:15</span></div>
+				<div class="BannerLeft"><i class="icon iconfont icon-zanting TimePause" onclick="doPause()"></i><span id="timeCounting"></span></div>
 			    <div class="BannerRight">
 				<i class="icon iconfont icon-tishi "></i>
 				<i class="icon iconfont icon-jisuanqi"></i>
@@ -163,20 +167,26 @@
 			<div class="QArea">
 				<div class="Qinfo">
 					<div class="QinfoLeft">LR</div>
-					<div class="QinfoRight"><span>（单选题）&nbsp;5</span>/65</div>
+					<div class="QinfoRight"><span>（单选题）&nbsp;{{currentQue}}</span>/{{maxQue}}</div>
 					<div class="clearfloat"></div>
 				</div>
 				<div class="Qcontent">
-					<div class="Qtitle">题目  1 </div>
-					5个囚犯，分别按1-5号在装有100颗绿豆的麻袋抓绿豆，规定每个人至少抓一颗，而抓得最多的和最少的人将被处死，而且，他们之间不能交流，但在抓的时候，可以摸出剩下的豆子数。问他们中谁的存活几率最大？
-				</div>
+					<div class="Qtitle">题目 {{currentQue}} </div>
+					{{title}}</div>
 			</div>
 				<div class="AArea">
 				<ul>
-					<li><span>A</span> 甲是凶手</li>
-					<li><span>B</span> 乙是凶手</li>
-					<li><span>C</span> 丙是凶手</li>
-					<li><span>D</span> 丁是凶手</li>
+					<li v-for="(value, key) in options">
+						<span>{{ key }}</span>  {{ value }}
+					</li>
+					<!--<li><span>A</span> 甲是凶手</li>-->
+					<!--<li><span>B</span> 乙是凶手</li>-->
+					<!--<li><span>C</span> 丙是凶手</li>-->
+					<!--<li><span>D</span> 丁是凶手</li>-->
+					<br>
+					<br>
+					<br>
+					<br>
 					<br>
 					<br>
 					<br>
@@ -200,26 +210,26 @@
 					机器学习理论学习
 				</div>
 				<div class="AStapsBox">
-				<div class="AStaps ASselect">1</div>
-				<div class="AStaps ASselect">2</div>
-				<div class="AStaps ASselect">3</div>
-				<div class="AStaps">4</div>
-				<div class="AStaps">5</div>
+				<!--<div class="AStaps ASselect">1</div>-->
+				<!--<div class="AStaps ASselect">2</div>-->
+				<!--<div class="AStaps ASselect">3</div>-->
+				<!--<div class="AStaps">4</div>-->
+				<!--<div class="AStaps">5</div>-->
 				<div class="clearfloat"></div>
 				</div>
 			</div>
 		</div>
         <div id="page4-1" class="pages" style="display: none;">
             <div class="infoBanner">
-                <div class="BannerLeft">测试时间 <span>2018/2/23</span></div>
+                <div class="BannerLeft">测试时间 <span>2017/11/27</span></div>
                 <div class="BannerCenter">测试报告</div>
-                <div class="BannerRight">测试用时 <span>20:15</span></div>
+                <div class="BannerRight">测试用时 <span>3:35</span></div>
             </div>
             <div class="contentBox">
                 <div class="resultBox">
 					<div class="resultSubTitle">本次测试中</div>
 					<article>
-						<p>共有题目65道，您作对60道，卷面得分<span class="Highlight">73分</span></p>
+						<p>共有题目{{maxQue}}道，您作对{{maxQue-4}}道，卷面得分<span class="Highlight">73分</span></p>
 						<p>排在本次测试的前<span class="Highlight">10%</span></p>
 						<p>本次积分增长情况<span class="Highlight">+4</span></p>
 						<p>您的累积积分为<span class="Highlight">126.5</span></p>

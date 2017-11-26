@@ -668,9 +668,12 @@ body{
 	float: right;
 	position: absolute;
 	right: 12px;
-	top: 12px;
+	top: 58px;
 	font-size: 25px!important;
 	color: #28baba;
+}
+.tipsTitle .icon-guanbi{
+	top: 12px!important;
 }
 #calcuator .icon-guanbi{
 	right: 5px;
@@ -686,7 +689,29 @@ body{
 .Qbtm:last-child{
 	background: #34cdce;;
 }
+/*//倒计时*/
+.TestContinue{
+	display: none;
+	margin-top: 35%;
+	background: #92b5bc;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
 
+	/*margin-top: 35%;*/
+	/*background: #05050591;*/
+	/*color: #fff;*/
+	/*padding: 26px;*/
+	/*text-align: center;*/
+	/*margin: 126px;*/
+	/*border-radius: 50%;*/
+}
+.TestContinue i{
+	font-size: 3rem;
+}
+.TestContinue p{
+	font-size: 1rem;
+}
 /*//草稿纸样式*/
 .ScriptBox{
 display: none;
@@ -807,6 +832,8 @@ display: none;
 .ASTitle span:last-child{
 	position: absolute;
 	right: 15px;
+	font-size: 26px;
+	line-height: 0.6;
 }
 .ASSubTitle{
 	text-align: center;
@@ -839,11 +866,11 @@ display: none;
 	border: 1px solid #5ccfcf;
 }
 .AStaps:nth-child(n+6){
-	margin: 9px;
+	margin: 7px;
 }
 .AStaps:nth-child(n+11){
 	padding: 11px 12px;
-	margin: 9px;
+	margin: 6px;
 }
 /**************************/
 /*#page1-1{
