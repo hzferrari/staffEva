@@ -320,8 +320,8 @@ $(function(){
 						<p>2018/8/15至9/15</p>\
 						<br>\
 						<p>测试题目：</p>\
-						<p>65道选择题</p>\
-						<p>每题1分</p>\
+						<p>20道选择题</p>\
+						<p>每题5分</p>\
 						<br>\
 						<p>测试总分：80分</p>";
 
@@ -561,17 +561,32 @@ $(function(){
 	});
 	//学习与练习
 	$("#enterTestBtn").on("click",function(){
-		oPageSkip.goNext("#page3-1", "测试");
+		__loadingMask();
+		setTimeout(function(){
+			oPageSkip.goNext("#page3-1", "测试");
+		},1000)
+		
 	})
 	//下一题
 	$("#nextQuestion").on("click",function(){
-		oPageSkip.goNext("#page4-1", "测试报告");
+		__loadingMask();
+		setTimeout(function(){
+			oPageSkip.goNext("#page4-1", "测试报告");
+		},1000)
+		
 	})
 	//完成测试
 	$("#completeTest").on("click",function(){
 		oPageSkip.goNext("#page1-1", "数据挖掘工程师");
 	})
 
+	//****loading遮罩
+	function __loadingMask(){
+		$(".loading").show();
+		setTimeout(function(){
+		    $(".loading").hide();
+		},908);
+	}
 	var questions = [
 		{id:"1001",title:"在寻找 n 个元素中第 k 小元素问题中，如使用快速排序算法思想，运用分治算法对 n 个元素进行划分，应如何选择划分基准？下面（ ） 答案解释最合理。",options:["随机选择一个元素作为划分基准","取子序列的第一个元素作为划分基准","用中位数的中位数方法寻找划分基准","以上皆可行，但不同方法的算法复杂度上界可能不同"],answer:"D", },
 		{id:"1002",title:"下列哪种排序算法的附加存储开销最大（）",options:["快速排序","堆排序","归并排序","插入排序"],answer:"C", },
