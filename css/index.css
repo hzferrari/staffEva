@@ -15,6 +15,12 @@ body{
 	background: #f4f4f4;
 	overflow-x: hidden;
 }
+/*隐藏滚动条*/
+::-webkit-scrollbar{
+	display: none; 
+	width: 0; 
+	height: 0;
+}
 /**/
 #mainBox{
 	height: 100%;
@@ -100,7 +106,7 @@ body{
 	position: relative;
 	left: 3%;
 	color: #8A8888;
-	font-size: 0.5rem;
+	font-size: 0.9rem;
 	font-weight: 700;
 }
 #radarChartCanvas{
@@ -113,14 +119,14 @@ body{
 .abilityBoxHead{
 	position: relative;
 	width: 100%;
-	height: 2.5rem;
-	line-height: 2.5rem;
+	height: 3rem;
+	line-height: 3rem;
 	color: #8A8888;
 	font-weight: 700;
 	background-color: #F4F4F4;
 }
 .abilityBoxHead span{
-	font-size: 0.5rem; 
+	font-size: 0.8rem; 
 }
 .abilityBoxHead span:nth-child(1){
 	margin-left: 5%;
@@ -131,8 +137,8 @@ body{
 /*能力构成list*/
 #abilityScoreList li{
 	width: 100%;
-	height: 3rem;
-	line-height: 3rem;
+	height: 3.5rem;
+	line-height: 3.5rem;
 	border-bottom: 1px solid rgba(204,204,204,0.2);
 }
 #abilityScoreList li .icon{
@@ -162,6 +168,7 @@ body{
 	color: #c0c0c0;
 	font-weight: 700;
 	letter-spacing: 1px;
+	font-size: 0.8rem;
 }
 #abilityScoreList li .column_4{
 	position: relative;
@@ -176,6 +183,98 @@ body{
 	font-size: 1.5rem;
 	font-weight: 700;
 }
+
+/******page1-2******/
+#page1-2{
+	background-color: #F4F4F4;
+	/*min-height: 1000px;*/
+	overflow: hidden;
+}
+#personalCenterItems{
+	position: absolute;
+	margin-top: 4rem;
+	color: #555;
+	width: 100%;
+}
+.personalCenterItem{
+	position: relative;
+	width: 100%;
+	height: 3rem;
+	line-height: 3rem;
+	background-color: #fff;
+	border-bottom: 1px solid #F4F4F4;
+}
+#personalCenterItems li:nth-child(1) .column_2{
+	color: #c0c0c0;
+	font-size: 0.8rem;
+}
+#personalCenterItems li:nth-child(2){
+	margin-bottom: 1rem;
+}
+#personalCenterItems li:nth-child(7){
+	margin-bottom: 1rem;
+}
+#personalCenterItems li:nth-child(9){
+	margin-bottom: 1rem;
+}
+#personalCenterItems li:nth-child(11){
+	margin-bottom: 1rem;
+}
+.personalCenterItem span,.personalCenterItem i{
+	position: relative;
+	display: inline-block;
+}
+.personalCenterItem .column_1{
+	width: 30%;
+	left: 3%;
+}
+.personalCenterItem .column_2{
+	width: 30%;
+	left: 33%;
+}
+.personalCenterItem .column_3{
+	width: 10%;
+	left: 31%;
+	color: #34CDCE;
+	font-weight: 700;
+	font-size: 1.2rem;
+}
+/*开关*/
+#switch1_off{
+    width: 1.8rem;
+    height: 1.1rem;
+    border-radius: 1rem;
+    position: relative;
+}
+#switch1{
+	left: 28%;
+}
+#switch1_on{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    position: absolute;
+    background: #fff;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+}
+.switch_on1{
+    background: #34CDCE;
+}
+.switch_on2{
+    top: 1px;
+    right: 0;
+}
+.switch_off1{
+    background: rgba(255,255,255,0.4);
+    border:1px solid rgba(0,0,0,0.15);
+    border-left: transparent;
+    box-sizing: border-box;
+}
+.switch_off2{
+    left: 0px;
+    top: 0px;
+    /*border:2px solid rgba(0,0,0,0.1);*/
+}
 /******page2-1******/
 #page2-1{
 	color: #6B6464;
@@ -183,8 +282,8 @@ body{
 /*char*/
 #page2-1 .charBox{
 	position: relative;
-	margin-top: 4.5rem;
-	margin-bottom: 1.5rem;
+	margin-top: 5rem;
+	margin-bottom: 1rem;
 }
 #page2-1 .leftSpan{
 	position: relative;
@@ -229,17 +328,50 @@ body{
 	font-weight: 700;
 }
 #lineLegend p.line2{
-	font-size: 0.5rem;
+	font-size: 0.6rem;
+}
+/*line slideBar*/
+#lineChartSlideBarBox{
+	width: 100%;
+	text-align: center;
+	margin-top: 1rem;
+}
+#lineChartSlideBar{
+    /*margin: 0 auto;*/
+    width: 95%;
+    -webkit-appearance: none;
+    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+}
+#lineChartSlideBar:focus {
+    outline: none;
+}
+#lineChartSlideBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 25px;
+    width: 60px;
+    margin-top: 0px; /*使滑块超出轨道部分的偏移量相等*/
+    background: #34CDCE;
+    color: #fff;
+    border-radius: 20px; /*外观设置为圆形*/
+    content: "2018";
+}
+#lineChartSlideBar::-webkit-slider-runnable-track {
+    height: 26px;
+    border-radius: 20px; /*将轨道设为圆角的*/
+/*    box-shadow:inset 10px 0 10px #34CDCE;/* !*轨道内置阴影效果*!*/
+    background: #f4f4f4;
+    /*background: rgba(52,205,206,0.1);*/
 }
 
+/**/
 #page2-1_box2{
 	position: relative;
 	width: 100%;
-	height: 13.5rem;
+	height: 13rem;
 	background-color: #F4F4F4;
 }
 #page2-1_box2Head{
-	padding: 0.8rem;
+	padding: 0.6rem;
 	line-height: 1rem;
 	color: #6B6464;
 	font-weight: 700;
@@ -254,7 +386,7 @@ body{
 }
 #page2-1_box2Head span:nth-child(2){
 	left: 48%;
-	font-size: 0.5rem;
+	font-size: 0.7rem;
 }
 /*#page2-1_box2Head span:nth-child(3){
 	left: 40%;
@@ -346,7 +478,7 @@ body{
 	display: inline-block;
 	text-align: center;
 	/*padding: 0.8rem 0;*/
-	margin: 1.5rem 3px;
+	margin: 1.2rem 3px;
 	font-weight: 700;
 	border-radius: 3px;
 	height: 3rem;
@@ -356,12 +488,13 @@ body{
 	width: 27%;
 	background-color: #FFE858;
 	color: #A6A5A5;
+	font-size: 0.9rem;
 }
 #enterTestBtn{
 	width: 57%;
 	background-color: #34CDCE;
 	color: #fff;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	top: 3px;
 }
 #enterTestBtn i{
