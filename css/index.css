@@ -12,6 +12,7 @@ ul,li{
 	margin: 0;
 }
 body{
+	background: #f4f4f4;
 	overflow-x: hidden;
 }
 /*隐藏滚动条*/
@@ -501,5 +502,346 @@ body{
 	top: 3px;
 }
 #enterTestBtn i{
+	color: #34cdce;
+}
+#enterTestBtn span{
 	font-size: 1.5rem;
+}
+
+/*page3样式*/
+.infoBanner{
+	position: fixed;
+	top: 3rem;
+	background: #F4F4F4;
+	width: 100%;
+	padding: 12px 0;
+	z-index: 40;
+}
+.infoBanner span{
+	font-size:1rem;
+}
+.infoBanner i{
+	display: inline-block;
+	color:#34cdce;
+}
+.BannerLeft{
+	float:left;
+	display: inline-block;
+	margin-left: 6%;
+}
+.BannerLeft i{
+	font-size: 1rem;
+	margin-right: 0.5rem;
+}
+.BannerRight i{
+	font-size: 1.5rem;
+	margin-left: 2rem;
+}
+.BannerRight{
+	margin-right: 6%;
+	float: right;
+	display: inline-block;
+}
+.QArea{
+	width: 100%;
+	background: #fff;
+	position: relative;
+	top: 95px;
+}
+.Qinfo{
+	padding: 20px;
+}
+.QinfoLeft{
+	background: #34cdce;
+	color: #fff;
+	display: inline-block;
+	padding: 2px 15px;
+	/* float: left; */
+	border-radius: 6px;
+}
+.QinfoRight{
+	display: inline-block;
+	float: right;
+	font-size: 13px;
+}
+.QinfoRight span{
+	color: #34cdce;
+}
+.Qtitle{
+	font-weight: bold;
+}
+.Qcontent{
+	padding: 25px;
+	line-height: 30px;
+}
+.clearfloat{
+	clear: both;
+	height:0;
+	overflow:hidden;
+}
+
+.QBottomBanner{
+	position: fixed;
+	bottom: 0;
+	background: #fff;
+	border-top: 1px solid #ebebeb;
+	width: 100%;
+	padding-top: 12px;
+	padding-bottom: 22px;
+}
+.Qbtm{
+	background: #ffd10d;
+	color: #fff;
+	padding: 14px 0px;
+	border-radius: 5px;
+	margin: 0px 3%;
+	width: 27%;
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+.AArea{
+	position: relative;
+	top: 95px;
+	background-color: #F4F4F4;
+	/*margin-bottom: 80px;*/
+	padding: 20px;
+}
+.AArea li span{
+	background: #849699;
+	color: #fff;
+	border-radius: 50%;
+	padding: 0px 5px;
+	margin-right: 6px;
+}
+.AArea li{
+	line-height: 28px;
+	margin: -3px 0px;
+	padding: 5px 10px;
+}
+.AArea .Aselected span{
+	/*border: 5px solid #cceaea;*/
+	/*margin-left: -5px;*/
+	/*margin-right: 1px;*/
+	background: #34cdce;
+}
+.AArea .Aselected{
+	background: #e3e3e3;
+	border-radius: 10px;
+	/*border: 1px solid #d6d6d6;*/
+	/*margin: 3px 0px;*/
+	/*padding: 5px 10px;*/
+	/*margin-left: -10px;*/
+}
+.contentBox{
+/*overflow: scroll;*/
+}
+.mark{
+	display: none;
+	background: rgba(0, 0, 0, 0.27);
+	z-index:100;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+}
+.TipsBox{
+	color: #014647;
+	display: none;
+	z-index: 110;
+	background: #fffffff0;
+	border: solid 1px #959595;
+	border-radius: 20px;
+	position: relative;
+	width: 76%;
+	text-align: left;
+	margin: 0px auto;
+	padding: 20px;
+	margin-top: 104px;
+	overflow: scroll;
+	height: 250px;
+}
+.tipsTitle{
+	font-weight: bold;
+}
+.icon-guanbi{
+	font-weight: normal;
+	float: right;
+	position: absolute;
+	right: 12px;
+	top: 12px;
+	font-size: 25px!important;
+	color: #28baba;
+}
+#calcuator .icon-guanbi{
+	right: 5px;
+	top: 6px;
+	color: #a1a1a1;
+}
+.TagSelected{
+	color: #ffb605!important;
+}
+#icon-more{
+	font-size: 23px;
+}
+.Qbtm:last-child{
+	background: #34cdce;;
+}
+
+/*//草稿纸样式*/
+.ScriptBox{
+display: none;
+}
+.ScriptBox canvas{
+	background:#fff;
+	margin:48px 0px;
+}
+.ScriptBox .icon-guanbi{
+	top: 58px;
+	right: 10px;
+	font-size: 26px!important;
+}
+#clearScript{
+	position: absolute;
+	top: 57px;
+	left: 8px;
+	background: #ff6a0ec7;
+	color: #fff;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+/*page4*/
+#page4-1 .infoBanner{
+	position: relative;
+	text-align: center;
+    font-size: 0.6rem;
+}
+#page4-1 .infoBanner .BannerLeft{
+	margin-left: 0%;
+	position: absolute;
+	left: 3%;
+}
+#page4-1 .infoBanner .BannerRight{
+	margin-right: 0%;
+	position: absolute;
+	right: 3%;
+}
+#page4-1 .infoBanner .BannerCenter{
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 0.7;
+	color: #666;
+}
+#page4-1 .infoBanner span{
+	font-size: 0.6rem;
+}
+#page4-1 .Qbtm:last-child{    width: 57%;}
+
+
+#page4-1 .contentBox{
+	position: relative;
+	margin-top: 50px;
+}
+.resultBox{
+	background: #fff;
+	text-align: center;
+	font-size: 0.8rem;
+	padding:15px;
+}
+.resultSubTitle{
+	color: #888;
+	font-size: 0.9rem;
+	line-height: 2;
+}
+.resultTitle{
+	margin:10px;
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+	color: #666;
+}
+.Highlight{
+	font-weight: bold;
+	color: #34cdce;
+}
+.resultBox p{
+	line-height: 2.5;
+}
+.learnMore i{
+    float: left;
+	padding:17px;
+	background: #ff4011;
+	color: #fffdef;
+	text-align: center;
+	border-radius: 6px;
+	font-size: 18px;
+}
+.learnMore i:nth-child(2){
+	background: #04a94b;
+	margin-left: 20px;
+	padding: 17px 4px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.answerSheetBox{
+	display: none;
+	position: fixed;
+	background: #fff;
+	width: 100%;
+	height:100%;
+	top: 0px;
+	z-index: 250;
+	overflow: scroll;
+}
+.ASTitle{
+	color: #fff;
+	background: #34cdce;
+	padding: 14px;
+	text-align: center;
+}
+.ASTitle span:first-child{
+	position: absolute;
+	left: 15px;
+}
+.ASTitle span:last-child{
+	position: absolute;
+	right: 15px;
+}
+.ASSubTitle{
+	text-align: center;
+	color: #34cdce;
+	font-weight: bold;
+	padding-bottom:10px;
+	margin: 10px;
+	border-bottom:1px solid #eee;
+}
+.AStapsBox{
+	padding: 10px 30px;
+}
+.AStaps{
+	margin: 7px;
+	display: inline-block;
+	background: #fff;
+	color: #34adb6;
+	border: 1px solid #bab9b9;
+	padding: 10px 16px;
+	border-radius: 50%;
+}
+.AStaps:hover{
+	background: #68dbdb;
+	color: #fff;
+	border: 1px solid #5ccfcf;
+}
+.ASselect{
+	background: #68dbdb;
+	color: #fff;
+	border: 1px solid #5ccfcf;
+}
+.AStaps:nth-child(n+6){
+	margin: 9px;
+}
+.AStaps:nth-child(n+11){
+	padding: 11px 12px;
+	margin: 9px;
 }
