@@ -559,18 +559,24 @@ $(function(){
 	$("#backBtn").on("click",function(){
 		oPageSkip.goBack();
 	});
-		
+	//学习与练习
+	$("#enterTestBtn").on("click",function(){
+		oPageSkip.goNext("#page3-1", "测试");
+	})
+	//下一题
+	$("#nextQuestion").on("click",function(){
+		oPageSkip.goNext("#page4-1", "测试报告");
+	})
+
+// <<<<<<< HEAD
+// 	// $(".pages").hide();
+// 	// $("#page2-1").show();
+
+// 	vueHeadBar.text = "机器学习理论";	//修改标题
 
 
-<<<<<<< HEAD
-	// $(".pages").hide();
-	// $("#page2-1").show();
-
-	vueHeadBar.text = "机器学习理论";	//修改标题
 
 
-
-
-=======
->>>>>>> bdd3515c6e926143804146a324a659c95d0354e8
+// =======
+// >>>>>>> bdd3515c6e926143804146a324a659c95d0354e8
 })
