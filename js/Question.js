@@ -212,6 +212,8 @@ function changePage(type,page) {
     }
     else{
         currentQue=page;
+        if(currentQue==maxQue) $("#nextQuestion").html("提交答案")
+        else  $("#nextQuestion").html("下一题");
         vueQuestion.currentQue = currentQue;
         vueQuestion.title = questions[currentQue - 1].title;
         vueQuestion.options = questions[currentQue - 1].options;
