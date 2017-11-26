@@ -1,9 +1,9 @@
 $(function(){
     //page3 脚本
-    $("#icon-myselected").hide();
-    $("#icon-more").show();
-    $(".noticeBar").hide();
-    $("#page3-1").show();
+    // $("#icon-myselected").hide();
+    // $("#icon-more").show();
+    // $(".noticeBar").hide();
+    // $("#page3-1").show();
 
 
     var $Ali=$(".AArea li");

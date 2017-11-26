@@ -35,7 +35,7 @@
                 <i class="icon iconfont icon-guanbi column_3 noticeBarCloseBtn" id=""></i>
         	</div>
         </div>
-		<div id="page1-1" class="pages" style="display: none;">
+		<div id="page1-1" class="pages">
 			<div class="charBox">
 				<div id="radarLegend">能力状况</div>
 				<canvas id="radarChartCanvas" width="90%" height="55rem"></canvas>
@@ -67,8 +67,11 @@
 		</div>
 		<div id="page2-1" class="pages" style="display: none;">
 			<div class="charBox">
-				<span class="leftSpan">测试状况</span>
-				<div id="lineLegend"><i class="icon iconfont icon-file-o"></i><span><p class="line1">测试报告</p><p class="line2">2018/8/13</p></span></div>
+				<div class="charBoxHead">
+					<span class="leftSpan">测试状况</span>
+					<div id="lineLegend"><i class="icon iconfont icon-file-o"></i><span><p class="line1">测试报告</p><p class="line2">2018/8/13</p></span></div>
+				</div>
+				
 				<canvas id="lineChartCanvas" width="90%" height="50rem"></canvas>
 				<div id="lineChartSlideBarBox">
 					<input type="range" id="lineChartSlideBar" name="lineChartSlideBar"  value="0" step="1" min="1" max="9">
@@ -180,14 +183,14 @@
 			</div>
             <div class="QBottomBanner">
                 <div class="Qbtm" id="answerSheet">答题卡</div>
-                <div class="Qbtm">上一题</div>
-                <div class="Qbtm">下一题</div>
+                <div class="Qbtm"  id="preQuestion">上一题</div>
+                <div class="Qbtm"  id="nextQuestion">下一题</div>
             </div>
 			<div class="answerSheetBox">
 				<div class="ASTitle">
 					<span class="ATime">00:35</span>
 					<span>答题卡</span>
-					<span id="ASclose">X</span>
+					<span id="ASclose">×</span>
 				</div>
 				<div class="ASSubTitle">
 					机器学习理论学习

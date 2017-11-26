@@ -12,7 +12,7 @@ ul,li{
 	margin: 0;
 }
 body{
-	background: #f4f4f4;
+	/*background: #f4f4f4;*/
 	overflow-x: hidden;
 }
 /*隐藏滚动条*/
@@ -280,6 +280,10 @@ body{
 	color: #6B6464;
 }
 /*char*/
+#page2-1 .charBoxHead{
+	position: relative;
+	bottom: 1rem;
+}
 #page2-1 .charBox{
 	position: relative;
 	margin-top: 5rem;
@@ -644,7 +648,7 @@ body{
 	color: #014647;
 	display: none;
 	z-index: 110;
-	background: #fffffff0;
+	background: #ffffff;
 	border: solid 1px #959595;
 	border-radius: 20px;
 	position: relative;
@@ -659,7 +663,7 @@ body{
 .tipsTitle{
 	font-weight: bold;
 }
-.icon-guanbi{
+#page3-1 .icon-guanbi{
 	font-weight: normal;
 	float: right;
 	position: absolute;
@@ -841,3 +845,22 @@ display: none;
 	padding: 11px 12px;
 	margin: 9px;
 }
+/**************************/
+/*#page1-1{
+	background: #fff;
+}
+#page1-2{
+	background: #f4f4f4;
+}
+#page4-1{
+	background: #fff;
+}
+#page2-1{
+	background: #fff;
+}
+#page3-1{
+	background: #f4f4f4;
+}
+#page4-1{
+	background: #f4f4f4;
+}*/

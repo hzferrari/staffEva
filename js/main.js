@@ -38,7 +38,8 @@ var KLChart = {
      	            yAxes: [{
      	             	display:false,	//隐藏y标签与网格
 		                ticks: {
-		                    // beginAtZero:true
+		                    // beginAtZero:true,
+		                    min: 50,
 		                }
 		            }],
 		            xAxes: [{
@@ -294,7 +295,7 @@ $(function(){
 	      { name: '机器学习理论', points: 80 },
 	      { name: '数据结构和算法', points: 97 },
 	      { name: '云计算和虚拟化', points: 78 },
-	      { name: 'HADOOP', points: 50 },
+	      { name: 'HADOOP', points: 58 },
 	    ];
 	//能力榜样列表
 	var abilitiRangeItems = [
@@ -498,12 +499,12 @@ $(function(){
 			      { name: '9月', points: NaN },
 			    ];
 			var dataLine5 = [
-			      { name: '1月', points: 39 },
-			      { name: '2月', points: 50 },
+			      { name: '1月', points: 59 },
+			      { name: '2月', points: 57 },
 			      { name: '3月', points: 60 },
-			      { name: '4月', points: 41 },
-			      { name: '5月', points: 47 },
-			      { name: '6月', points: 53 },
+			      { name: '4月', points: 55 },
+			      { name: '5月', points: 56 },
+			      { name: '6月', points: 57 },
 			      { name: '7月', points: 63 },
 			      { name: '8月', points: NaN },	//不存在的数据显示NaN
 			      { name: '9月', points: NaN },
@@ -558,18 +559,24 @@ $(function(){
 	$("#backBtn").on("click",function(){
 		oPageSkip.goBack();
 	});
-		
+	//学习与练习
+	$("#enterTestBtn").on("click",function(){
+		oPageSkip.goNext("#page3-1", "测试");
+	})
+	//下一题
+	$("#nextQuestion").on("click",function(){
+		oPageSkip.goNext("#page4-1", "测试报告");
+	})
+
+// <<<<<<< HEAD
+// 	// $(".pages").hide();
+// 	// $("#page2-1").show();
+
+// 	vueHeadBar.text = "机器学习理论";	//修改标题
 
 
-<<<<<<< HEAD
-	// $(".pages").hide();
-	// $("#page2-1").show();
-
-	vueHeadBar.text = "机器学习理论";	//修改标题
 
 
-
-
-=======
->>>>>>> bdd3515c6e926143804146a324a659c95d0354e8
+// =======
+// >>>>>>> bdd3515c6e926143804146a324a659c95d0354e8
 })
