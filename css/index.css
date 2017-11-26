@@ -279,6 +279,10 @@ body{
 	color: #6B6464;
 }
 /*char*/
+#page2-1 .charBoxHead{
+	position: relative;
+	bottom: 1rem;
+}
 #page2-1 .charBox{
 	position: relative;
 	margin-top: 5rem;
