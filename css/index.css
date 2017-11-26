@@ -98,7 +98,7 @@ body{
 /*char*/
 #page1-1 .charBox{
 	position: relative;
-	margin-top: 4rem;
+	margin-top: 5rem;
 	margin-bottom: 1.5rem;
 }
 #radarLegend{
@@ -118,8 +118,8 @@ body{
 .abilityBoxHead{
 	position: relative;
 	width: 100%;
-	height: 2.5rem;
-	line-height: 2.5rem;
+	height: 3rem;
+	line-height: 3rem;
 	color: #8A8888;
 	font-weight: 700;
 	background-color: #F4F4F4;
@@ -136,8 +136,8 @@ body{
 /*能力构成list*/
 #abilityScoreList li{
 	width: 100%;
-	height: 2.8rem;
-	line-height: 2.8rem;
+	height: 3.5rem;
+	line-height: 3.5rem;
 	border-bottom: 1px solid rgba(204,204,204,0.2);
 }
 #abilityScoreList li .icon{
@@ -281,7 +281,7 @@ body{
 /*char*/
 #page2-1 .charBox{
 	position: relative;
-	margin-top: 3.7rem;
+	margin-top: 5rem;
 	margin-bottom: 1rem;
 }
 #page2-1 .leftSpan{
