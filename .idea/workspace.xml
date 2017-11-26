@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7183a29-33a8-4497-aecf-6f98636cdec8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/index.css" afterPath="$PROJECT_DIR$/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Question.js" afterPath="$PROJECT_DIR$/js/Question.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
     </list>
@@ -22,8 +20,8 @@
       <file leaf-file-name="Question.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Question.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="191" column="2" lean-forward="true" selection-start-line="191" selection-start-column="2" selection-end-line="191" selection-end-column="2" />
+            <state relative-caret-position="323">
+              <caret line="123" column="44" lean-forward="false" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -42,8 +40,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="593" column="0" lean-forward="true" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
+            <state relative-caret-position="484">
+              <caret line="589" column="0" lean-forward="true" selection-start-line="589" selection-start-column="0" selection-end-line="589" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,8 +50,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="198" column="49" lean-forward="false" selection-start-line="198" selection-start-column="38" selection-end-line="198" selection-end-column="49" />
+            <state relative-caret-position="431">
+              <caret line="212" column="47" lean-forward="false" selection-start-line="212" selection-start-column="39" selection-end-line="212" selection-end-column="47" />
               <folding>
                 <element signature="n#style#0;n#i#1;n#div#0;n#div#1;n#di#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#di#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -97,10 +95,13 @@
       <find>contin</find>
       <find>mark</find>
       <find>asti</find>
-      <find>n+6</find>
       <find>测试</find>
       <find>ASTitle</find>
+      <find>n+6</find>
+      <find>答题卡</find>
+      <find>answerSheetBox</find>
       <find>changePag</find>
+      <find>answerSheet</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,7 +130,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="825" />
     <option name="y" value="277" />
     <option name="width" value="798" />
@@ -219,15 +220,15 @@
       <workItem from="1510643081710" duration="757000" />
       <workItem from="1511158023354" duration="38803000" />
       <workItem from="1511407108214" duration="623000" />
-      <workItem from="1511590299778" duration="28788000" />
+      <workItem from="1511590299778" duration="34225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68971000" />
+    <option name="totallyTimeSpent" value="74408000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25079533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -480,18 +481,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="593" column="0" lean-forward="true" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="198" column="49" lean-forward="false" selection-start-line="198" selection-start-column="38" selection-end-line="198" selection-end-column="49" />
+        <state relative-caret-position="431">
+          <caret line="212" column="47" lean-forward="false" selection-start-line="212" selection-start-column="39" selection-end-line="212" selection-end-column="47" />
           <folding>
             <element signature="n#style#0;n#i#1;n#div#0;n#div#1;n#di#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#di#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -503,10 +496,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="589" column="0" lean-forward="true" selection-start-line="589" selection-start-column="0" selection-end-line="589" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/Question.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="191" column="2" lean-forward="true" selection-start-line="191" selection-start-column="2" selection-end-line="191" selection-end-column="2" />
+        <state relative-caret-position="323">
+          <caret line="123" column="44" lean-forward="false" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
           <folding />
         </state>
       </provider>

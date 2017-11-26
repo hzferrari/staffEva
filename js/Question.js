@@ -11,6 +11,11 @@ var questions = [
     {id:"1010",title:"下面（）数据结构常用于函数调用。",options:["队列","栈","链表","数组"],answer:"B", },
 
 ];
+// 答案初始化s
+var answers=new Array(maxQue);
+for(var i=0;i<answers.length;i++){
+    answers[i]=0;
+}
 var Qtitle="在寻找 n 个元素中第 k 小元素问题中，如使用快速排序算法思想，运用分治算法对 n 个元素进行划分，应如何选择划分基准？下面（ ） 答案解释最合理。";
 var Qoption=["随机选择一个元素作为划分基准","取子序列的第一个元素作为划分基准","用中位数的中位数方法寻找划分基准","以上皆可行，但不同方法的算法复杂度上界可能不同"];
 var vueQuestion = new Vue({
@@ -114,6 +119,10 @@ $(function(){
     })
 
     $("#answerSheet").on("click",function () {
+        $(".AStaps").each(function (index,el) {
+           if(answers[index]!=0) $(el).addClass("ASselect");
+           else  $(el).removeClass("ASselect");
+        })
         $(".answerSheetBox").fadeIn(200);
     })
     $("#ASclose").on("click",function () {
@@ -170,14 +179,35 @@ function doGo(){
     $(".TestContinue").fadeOut(200);
 }
 function changePage(type,page) {
+    var curAnswer=$(".Aselected span").html();
+    // if(curAnswer=="A") curAnswer=1;
+    // else if(curAnswer=="B") curAnswer=2;
+    // else if(curAnswer=="C") curAnswer=3;
+    // else if(curAnswer=="D") curAnswer=4;
+    // else curAnswer=0;
+    if(curAnswer==undefined) curAnswer=0;
+    //切页前保存当前答案
+    answers[currentQue - 1]=curAnswer;
+
     if(page==0) {
         if (type == "next") currentQue++;
         else if (type == "pre") currentQue--;
         if (currentQue <= 0 || currentQue > maxQue) return;
         else {
+            if(currentQue==maxQue) $("#nextQuestion").html("提交答案")
+            else  $("#nextQuestion").html("下一题");
+            curAnswer=answers[currentQue - 1];
+            $(".Aselected").removeClass("Aselected");
+            if(curAnswer!=0){
+                $(".AArea li").each(function () {
+                    if($(this).find("span").html()==curAnswer)
+                        $(this).addClass("Aselected");
+                })
+            }
             vueQuestion.currentQue = currentQue;
             vueQuestion.title = questions[currentQue - 1].title;
             vueQuestion.options = questions[currentQue - 1].options;
+
         }
     }
     else{
@@ -185,6 +215,14 @@ function changePage(type,page) {
         vueQuestion.currentQue = currentQue;
         vueQuestion.title = questions[currentQue - 1].title;
         vueQuestion.options = questions[currentQue - 1].options;
+        curAnswer=answers[currentQue - 1];
+        $(".Aselected").removeClass("Aselected");
+        if(curAnswer!=0){
+            $(".AArea li").each(function () {
+                if($(this).find("span").html()==curAnswer)
+                    $(this).addClass("Aselected");
+            })
+        }
     }
 }
 $("#nextQuestion").on("click",function () {

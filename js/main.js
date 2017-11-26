@@ -570,8 +570,8 @@ $(function(){
 		__loadingMask();
 		setTimeout(function(){
             $(".noticeBar").hide();
-           currentQue=0;
-            changePage("next",0);
+           currentQue=1;
+            changePage(null,1);
 			oPageSkip.goNext("#page3-1", "测试");
             //开始倒计时
             run();
@@ -580,11 +580,21 @@ $(function(){
 	})
 	//下一题
 	$("#nextQuestion").on("click",function(){
-		if(currentQue>maxQue) {
-            __loadingMask();
-            setTimeout(function () {
-                oPageSkip.goNext("#page4-1", "测试报告");
-            }, 1000)
+		if(currentQue>maxQue&&confirm("确定提交么?（提交后将不能修改）")) {
+			var Testcomplete=1;
+            for(var i=0;i<answers.length;i++){
+                if(answers[i]==0) {
+                	alert("还有题目未完成，无法提交！");
+                    Testcomplete=0;
+                }
+
+            }
+            if(Testcomplete) {
+                __loadingMask();
+                setTimeout(function () {
+                    oPageSkip.goNext("#page4-1", "测试报告");
+                }, 1000)
+            }
         }
 	})
 	//完成测试
