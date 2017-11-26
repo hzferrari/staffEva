@@ -1,3 +1,7 @@
+var maxQue=10;
+//当前题目数
+var currentQue=1;
+
 // ********图表对象
 var KLChart = {
 	//******定义线型图表对象
@@ -565,17 +569,23 @@ $(function(){
 	$("#enterTestBtn").on("click",function(){
 		__loadingMask();
 		setTimeout(function(){
+            $(".noticeBar").hide();
+           currentQue=0;
+            changePage("next",0);
 			oPageSkip.goNext("#page3-1", "测试");
+            //开始倒计时
+            run();
 		},1000)
 		
 	})
 	//下一题
 	$("#nextQuestion").on("click",function(){
-		__loadingMask();
-		setTimeout(function(){
-			oPageSkip.goNext("#page4-1", "测试报告");
-		},1000)
-		
+		if(currentQue>maxQue) {
+            __loadingMask();
+            setTimeout(function () {
+                oPageSkip.goNext("#page4-1", "测试报告");
+            }, 1000)
+        }
 	})
 	//完成测试
 	$("#completeTest").on("click",function(){
@@ -589,18 +599,6 @@ $(function(){
 		    $(".loading").hide();
 		},908);
 	}
-	var questions = [
-		{id:"1001",title:"在寻找 n 个元素中第 k 小元素问题中，如使用快速排序算法思想，运用分治算法对 n 个元素进行划分，应如何选择划分基准？下面（ ） 答案解释最合理。",options:["随机选择一个元素作为划分基准","取子序列的第一个元素作为划分基准","用中位数的中位数方法寻找划分基准","以上皆可行，但不同方法的算法复杂度上界可能不同"],answer:"D", },
-		{id:"1002",title:"下列哪种排序算法的附加存储开销最大（）",options:["快速排序","堆排序","归并排序","插入排序"],answer:"C", },
-		{id:"1003",title:"设一组权值集合 W=(15 ， 3 ， 14 ， 2 ， 6 ， 9 ， 16 ， 17) ，要求根据这些权值集合构造一棵哈夫曼树，则这棵哈夫曼树的带权路径长度为（ ）",options:["129","219","189","229"],answer:"D", },
-		{id:"1004",title:"已经知道一棵树的先序、后序、中序序列，还原这棵树需要（）",options:["先序和后续序列","中序","知道任意一种都可以","后序和中序"],answer:"D", },
-		{id:"1005",title:"在下述排序方法中，不属于内排序方法的是",options:["插入排序法","选择排序法","拓扑排序法","归并排序法"],answer:"C", },
-		{id:"1006",title:"一个具有767个节点的完全二叉树，其叶子节点个数为（）",options:["383","384","385","386"],answer:"B", },
-		{id:"1007",title:"数据序列(8,9,10,4,5,6,20,1,2)只能是下列排序算法中的()的两趟排序后的结果",options:["选择排序","冒泡排序","插入排序","堆排序"],answer:"C", },
-		{id:"1008",title:"设森林F中有三棵树,第一、第二、第三棵树的结点个数分别为M1、M2和M3,与森林F对应的二叉树根结点的右子树上的结点个数是()",options:["M1","M1+M2","M3","M2+M3"],answer:"D", },
-		{id:"1009",title:"n 个字符构成的字符串，假设每个字符都不一样，问有多少个子串？",options:["n+1","n(n+1)/2+1","2^n-1","n!"],answer:"B", },
-		{id:"1010",title:"下面（）数据结构常用于函数调用。",options:["队列","栈","链表","数组"],answer:"B", },
-		
-	];
+
 
 })
