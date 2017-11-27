@@ -1,7 +1,12 @@
+var maxQue=10;
+//当前题目数
+var currentQue=1;
+
 // ********图表对象
 var KLChart = {
 	//******定义线型图表对象
 	chartLine: {	
+		chart: "",
 		charsetData: {
 			type: "line",
 			data: {
@@ -37,7 +42,8 @@ var KLChart = {
      	            yAxes: [{
      	             	display:false,	//隐藏y标签与网格
 		                ticks: {
-		                    // beginAtZero:true
+		                    // beginAtZero:true,
+		                    min: 50,
 		                }
 		            }],
 		            xAxes: [{
@@ -53,6 +59,7 @@ var KLChart = {
 		},
 		init: function(legend,labels,data){
 			var ctx = document.getElementById("lineChartCanvas").getContext('2d');
+			
 			//下方区域填充渐变色
 			var screenHeight = window.screen.height;
 			var grad  = ctx.createLinearGradient(0,0,0,screenHeight/3.7);
@@ -66,8 +73,19 @@ var KLChart = {
 			this.charsetData.data.labels = labels;
 			this.charsetData.data.datasets[0].label = legend;
 			this.charsetData.data.datasets[0].data = data;
-			var chart = new Chart(ctx, this.charsetData);
+			this.chart = new Chart(ctx, this.charsetData);
 			this.activeSlideBar();
+		},
+		updataChart: function(data){
+			var chartLinelabels = [],	//x轴
+				chartLineData =  [];	//y轴
+			for(var i=0,len=data.length; i<len; i++){
+				chartLinelabels[i] = data[i].name;
+				chartLineData[i] = data[i].points;
+			}
+			this.charsetData.data.labels = chartLinelabels;
+			this.charsetData.data.datasets[0].data = chartLineData;
+			this.chart.update();
 		},
 		activeSlideBar: function(){
 			//slideBar滑动功能
@@ -220,6 +238,8 @@ var KLChart = {
 			
 
 			var ctx = document.getElementById("radarChartCanvas").getContext('2d');
+			// ctx.fillStyle = "#fefefe"; 		//用白色背景填充
+			// ctx.fillRect(0,0,100,100);
 			
 			this.charsetData.data.labels = labels;
 			//图例1
@@ -228,6 +248,7 @@ var KLChart = {
 			//图例2
 			// this.charsetData.data.datasets[1].label = legend[1];
 			// this.charsetData.data.datasets[1].data = data[1];
+
 			//
 			var myRadarChart = new Chart(ctx, this.charsetData);
 		},
@@ -266,96 +287,103 @@ var KLChart = {
 
 	},
 }
+
+//******数据设置
+var headBarContent = "数据挖掘工程师";
+var noticeBarContent = "您的HADOOP能力值较低，请进行提升并重新参加测试！";
+// 雷达图数据
+var dataRadar = [
+      { name: '编程语言', points: 82 },
+      { name: '机器学习理论', points: 80 },
+      { name: '数据结构和算法', points: 97 },
+      { name: '云计算和虚拟化', points: 78 },
+      { name: 'HADOOP', points: 58 },
+    ];
+//能力榜样列表
+var abilitiRangeItems = [
+		{ range: 1, name: '李广源', score: 178 },
+		{ range: 2, name: '张贺', score: 159 },
+		{ range: 3, name: '程菲', score: 158 },
+	];
+//  折线图数据
+var dataLine = [
+      { name: '1月', points: 83 },
+      { name: '2月', points: 80 },
+      { name: '3月', points: 96 },
+      { name: '4月', points: 78 },
+      { name: '5月', points: 74 },
+      { name: '6月', points: 83 },
+      { name: '7月', points: 80 },
+      { name: '8月', points: NaN },	//不存在的数据显示NaN
+      { name: '9月', points: NaN },
+    ];
+//本次测试说明(v-html插入)
+var testInstruct = "<p>测试时间：</p>\
+					<p>2018/8/15至9/15</p>\
+					<br>\
+					<p>测试题目：</p>\
+					<p>20道选择题</p>\
+					<p>每题5分</p>\
+					<br>\
+					<p>测试总分：80分</p>";
+
+// headBar
+var vueHeadBar = new Vue({
+	el: '.headBarContent',
+	data: {
+		text: headBarContent,
+	}
+})
+// vueHeadBar.text = "h";	//修改text方式
+var vueNoticeBar = new Vue({
+	el: '.noticeBarContent.column_2',
+	data: {
+		text: noticeBarContent,
+	}
+})
+
+//雷达图对应能力列表
+var vueAbilityScoreList = new Vue({
+  el: '#abilityScoreList',
+  data: {
+    abLiItems: dataRadar,
+  }
+})
+
+var vueAbilityRangeList = new Vue({
+	el: '#abilityRangeList',
+	data: {
+		abRanItems: abilitiRangeItems,
+	}
+})
+
+//本次测试说明vue
+var vueTestInstruct = new Vue({
+	el: ".box2innerBoxRight .contentBox",
+	data: {
+		text: testInstruct,
+	}
+});
 //*******
 $(function(){
-
-	//******数据设置
-	var headBarContent = "首页";
-	var noticeBarContent = "您的HADOOP能力值较低，请进行提升并重新参加测试！";
-	// 雷达图数据
-	var dataRadar = [
-	      { name: '编程语言', points: 83 },
-	      { name: '机器学习理论', points: 80 },
-	      { name: '数据结构和算法', points: 97 },
-	      { name: '云计算和虚拟化', points: 78 },
-	      { name: 'HADOOP', points: 44 },
-	    ];
-	//能力榜样列表
-	var abilitiRangeItems = [
-			{ range: 1, name: '李广源', score: 178 },
-			{ range: 2, name: '张贺', score: 159 },
-			{ range: 3, name: '程菲', score: 158 },
-		];
-	//  折线图数据
-	var dataLine = [
-	      { name: '1月', points: 83 },
-	      { name: '2月', points: 80 },
-	      { name: '3月', points: 97 },
-	      { name: '4月', points: 78 },
-	      { name: '5月', points: 74 },
-	      { name: '6月', points: 83 },
-	      { name: '7月', points: 80 },
-	      { name: '8月', points: NaN },	//不存在的数据显示NaN
-	      { name: '9月', points: NaN },
-	    ];
-	//本次测试说明(v-html插入)
-	var testInstruct = "<p>测试时间：</p>\
-						<p>2018/8/15至9/15</p>\
-						<br>\
-						<p>测试题目：</p>\
-						<p>65道选择题</p>\
-						<p>每题1分</p>\
-						<br>\
-						<p>测试总分：80分</p>";
-
-	// headBar
-	var vueHeadBar = new Vue({
-		el: '.headBarContent',
-		data: {
-			text: headBarContent,
-		}
-	})
-	// vueHeadBar.text = "h";	//修改text方式
-	var vueNoticeBar = new Vue({
-		el: '.noticeBarContent.column_2',
-		data: {
-			text: noticeBarContent,
-		}
-	})
-
-	//雷达图对应能力列表
-	var vueAbilityScoreList = new Vue({
-	  el: '#abilityScoreList',
-	  data: {
-	    abLiItems: dataRadar,
-	  }
-	})
-	
-	var vueAbilityRangeList = new Vue({
-		el: '#abilityRangeList',
-		data: {
-			abRanItems: abilitiRangeItems,
-		}
-	})
-
-	//本次测试说明vue
-	var vueTestInstruct = new Vue({
-		el: ".box2innerBoxRight .contentBox",
-		data: {
-			text: testInstruct,
-		}
-	});
 
 	//初始化图表
 	KLChart.init();
 	KLChart.radarChartInit(dataRadar);
 	KLChart.lineChartInit(dataLine);
+
+	// 
+	var userphone = "13802885453";
+	// when(oInterface.getAbilityIntegralsByPhone(userphone)).done(function(abilityIntegrals){
+
+	// })
+	
 	// ******noticeBar关闭按钮
 	$(".noticeBarCloseBtn").on("click",function(){
 		$(".noticeBar").slideUp(200);
 	});
 
-	$(".noticeBar").hide();
+	// $(".noticeBar").hide();
 	var page1_2height = window.screen.height;
 	$("#page1-2").css("height",page1_2height+'px');
 
@@ -399,6 +427,10 @@ $(function(){
 				var thisTitle = this.thisPageTitleStack.pop();
 				this.lastPageTitleStack.push(thisTitle);	//记录当前标题
 				this.thisPageTitleStack.push(nextTitle);	//记录下一页标题
+				//如果是page2-1则修改内容
+				if(nextPage == "#page2-1"){
+					this.changeData(nextTitle);
+				}
 			}		
 		},
 		goBack: function(){
@@ -417,8 +449,104 @@ $(function(){
 				var thisTitle = this.lastPageTitleStack.pop();
 				vueHeadBar.text = thisTitle;	
 				this.thisPageTitleStack.push(thisTitle);
+				//如果是page2-1则修改内容
+				if($backPage == "#page2-1"){
+					this.changeData(thisTitle);
+				}
 			}
 		},
+		changeData: function(title){
+			//  折线图数据
+			var dataLine1 = [
+			      { name: '1月', points: 83 },
+			      { name: '2月', points: 80 },
+			      { name: '3月', points: 97 },
+			      { name: '4月', points: 78 },
+			      { name: '5月', points: 74 },
+			      { name: '6月', points: 83 },
+			      { name: '7月', points: 80 },
+			      { name: '8月', points: NaN },	//不存在的数据显示NaN
+			      { name: '9月', points: NaN },
+			    ];
+			var dataLine2 = [
+			      { name: '1月', points: 90 },
+			      { name: '2月', points: 85 },
+			      { name: '3月', points: 82 },
+			      { name: '4月', points: 71 },
+			      { name: '5月', points: 75 },
+			      { name: '6月', points: 77 },
+			      { name: '7月', points: 80 },
+			      { name: '8月', points: NaN },	//不存在的数据显示NaN
+			      { name: '9月', points: NaN },
+			    ];
+			var dataLine3 = [
+			      { name: '1月', points: 97 },
+			      { name: '2月', points: 100 },
+			      { name: '3月', points: 97 },
+			      { name: '4月', points: 96 },
+			      { name: '5月', points: 95 },
+			      { name: '6月', points: 94 },
+			      { name: '7月', points: 97 },
+			      { name: '8月', points: NaN },	//不存在的数据显示NaN
+			      { name: '9月', points: NaN },
+			    ];
+			var dataLine4 = [
+			      { name: '1月', points: 73 },
+			      { name: '2月', points: 78 },
+			      { name: '3月', points: 80 },
+			      { name: '4月', points: 78 },
+			      { name: '5月', points: 77 },
+			      { name: '6月', points: 80 },
+			      { name: '7月', points: 81 },
+			      { name: '8月', points: NaN },	//不存在的数据显示NaN
+			      { name: '9月', points: NaN },
+			    ];
+			var dataLine5 = [
+			      { name: '1月', points: 59 },
+			      { name: '2月', points: 57 },
+			      { name: '3月', points: 60 },
+			      { name: '4月', points: 55 },
+			      { name: '5月', points: 56 },
+			      { name: '6月', points: 57 },
+			      { name: '7月', points: 63 },
+			      { name: '8月', points: NaN },	//不存在的数据显示NaN
+			      { name: '9月', points: NaN },
+			    ];
+			var dataLine6 = [
+			      { name: '1月', points: 83 },
+			      { name: '2月', points: 80 },
+			      { name: '3月', points: 97 },
+			      { name: '4月', points: 78 },
+			      { name: '5月', points: 74 },
+			      { name: '6月', points: 83 },
+			      { name: '7月', points: 80 },
+			      { name: '8月', points: NaN },	//不存在的数据显示NaN
+			      { name: '9月', points: NaN },
+			    ];
+			var dataLine = "";
+			switch(title){
+				case "编程语言":
+					dataLine = dataLine1;
+					break;
+				case "机器学习理论":
+					dataLine = dataLine2;
+					break;
+				case "数据结构和算法":
+					dataLine = dataLine3;
+					break;
+				case "云计算和虚拟化":
+					dataLine = dataLine4;
+					break;
+				case "HADOOP":
+					dataLine = dataLine5;
+					break;
+				default:
+					console.log("没有数据！")
+					break;
+			}
+
+			KLChart.chartLine.updataChart(dataLine);
+		}
 	};
 	//能力列表转跳按钮
 	$("#abilityScoreList .toNextPage").on("click",function(){
@@ -434,7 +562,50 @@ $(function(){
 	$("#backBtn").on("click",function(){
 		oPageSkip.goBack();
 	});
+	//学习与练习
+	$("#enterTestBtn").on("click",function(){
+		__loadingMask();
+		setTimeout(function(){
+            $(".noticeBar").hide();
+           currentQue=1;
+            changePage(null,1);
+			oPageSkip.goNext("#page3-1", "测试");
+            //开始倒计时
+            run();
+		},1000)
 		
+	})
+	//下一题
+	$("#nextQuestion").on("click",function(){
+		if(currentQue>maxQue&&confirm("确定提交么?（提交后将不能修改）")) {
+			var Testcomplete=1;
+            for(var i=0;i<answers.length;i++){
+                if(answers[i]==0) {
+                	alert("还有题目未完成，无法提交！");
+                    Testcomplete=0;
+                }
+
+            }
+            if(Testcomplete) {
+                __loadingMask();
+                setTimeout(function () {
+                    oPageSkip.goNext("#page4-1", "测试报告");
+                }, 1000)
+            }
+        }
+	})
+	//完成测试
+	$("#completeTest").on("click",function(){
+		oPageSkip.goNext("#page1-1", "数据挖掘工程师");
+	})
+
+	//****loading遮罩
+	function __loadingMask(){
+		$(".loading").show();
+		setTimeout(function(){
+		    $(".loading").hide();
+		},908);
+	}
 
 
 })
