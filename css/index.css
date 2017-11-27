@@ -244,9 +244,12 @@ body{
     height: 1.1rem;
     border-radius: 1rem;
     position: relative;
+
 }
 #switch1{
 	left: 28%;
+	transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
 }
 #switch1_on{
     width: 1rem;
