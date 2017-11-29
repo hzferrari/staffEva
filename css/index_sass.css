@@ -1,0 +1,12 @@
+.headBarBox {
+  color: #34CDCE;
+  /*margin: 1rem 0;*/
+  line-height: 3rem; }
+  .headBarBox .column_1 {
+    width: 9%; }
+  .headBarBox .column_2 {
+    width: 9%; }
+  .headBarBox .column_3 {
+    width: 9%; }
+
+/*# sourceMappingURL=index_sass.css.map */
